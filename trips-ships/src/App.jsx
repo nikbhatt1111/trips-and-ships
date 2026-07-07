@@ -5,6 +5,8 @@ import AntarcticaPackingGuide from "./component/antarctica-packing-guide"
 import AntarcticaWildlifeGuide from "./component/antarctica-wildlife-guide"
 import AntarcticaCruiseItineraries from "./component/antarctica-cruise-itineraries"
 import AntarcticaLandingSites from "./component/antarctica-landing-sites"
+import ZodiacLandingsExplained from "./component/zodiac-landings"
+import AntarcticaCruiseFAQ from "./component/antarctica-cruise-faq"
 
 function App() {
   return (
@@ -16,34 +18,52 @@ function App() {
           element={<BestTimeToVisitAntarctica />}
         />
 
+        {/* Page 1 */}
         <Route
           path="/best-time-to-visit-antarctica"
           element={<BestTimeToVisitAntarctica />}
         />
 
+        {/* Page 2 */}
         <Route
           path="/is-an-antarctica-cruise-worth-it"
           element={<IsAntarcticaCruiseWorthIt />}
         />
 
+        {/* Page 3 */}
         <Route
           path="/antarctica-packing-guide"
           element={<AntarcticaPackingGuide />}
         />
 
+        {/* Page 4 */}
         <Route
           path="/antarctica-wildlife-guide"
           element={<AntarcticaWildlifeGuide />}
         />
 
+        {/* Page 5 */}
         <Route
           path="/antarctica-cruise-itineraries"
           element={<AntarcticaCruiseItineraries />}
         />
 
+        {/* Page 6 */}
         <Route
           path="/antarctica-landing-sites"
           element={<AntarcticaLandingSites />}
+        />
+
+        {/* Page 7 */}
+        <Route
+          path="/zodiac-landings"
+          element={<ZodiacLandingsExplained />}
+        />
+
+        {/* Page 8 */}
+        <Route
+          path="/antarctica-cruise-faq"
+          element={<AntarcticaCruiseFAQ />}
         />
 
       </Routes>
