@@ -197,22 +197,32 @@ export default function ZodiacLandingsExplained() {
         </div>
       </header>
 
-      <div className="tsa_wrap">
-        <div className="tsa_season_strip tsa_reveal">
-          <div className="tsa_season_strip_item">
+      <div className="tsa_season_strip tsa_reveal">
+        <div className="tsa_season_strip_item">
             <div className="tsa_ss_month">Shore Landings</div>
             <div className="tsa_ss_best">Walk on Antarctica, visit colonies, guided hikes</div>
-          </div>
-          <div className="tsa_season_strip_item">
+        </div>
+
+        <div className="tsa_season_strip_item">
             <div className="tsa_ss_month">Scenic Cruises</div>
             <div className="tsa_ss_best">Ice-filled bays, glacier fronts, iceberg photography</div>
-          </div>
-          <div className="tsa_season_strip_item">
+        </div>
+
+        <div className="tsa_season_strip_item">
             <div className="tsa_ss_month">Wildlife Excursions</div>
             <div className="tsa_ss_best">Whales, seals and penguins at water level</div>
-          </div>
         </div>
-      </div>
+
+        <div className="tsa_season_strip_item">
+            <div className="tsa_ss_month">Expert Expedition Guides</div>
+            <div className="tsa_ss_best">Naturalist-led excursions with fascinating Antarctic insights</div>
+        </div>
+
+        <div className="tsa_season_strip_item">
+            <div className="tsa_ss_month">Photography Opportunities</div>
+            <div className="tsa_ss_best">Capture glaciers, wildlife and dramatic polar landscapes</div>
+        </div>
+    </div>
 
       {/* ================= WHAT IS A ZODIAC LANDING ================= */}
       <section className="tsa_section">
