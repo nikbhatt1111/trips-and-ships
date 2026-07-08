@@ -314,7 +314,7 @@ body {
 .tsa_hero_inner {
     position: relative;
     z-index: 2;
-    max-width: 780px;
+    max-width: 60%;
     margin: 0 auto;
     padding: 100px 32px 140px;
     text-align: center;
@@ -342,7 +342,7 @@ body {
 .tsa_hero p {
     font-size: 18px;
     color: #b9c8db;
-    max-width: 560px;
+    max-width: 100%;
     margin: 0 auto 40px;
 }
 

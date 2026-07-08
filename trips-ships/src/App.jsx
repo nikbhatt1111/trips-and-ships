@@ -7,6 +7,10 @@ import AntarcticaCruiseItineraries from "./component/antarctica-cruise-itinerari
 import AntarcticaLandingSites from "./component/antarctica-landing-sites"
 import ZodiacLandingsExplained from "./component/zodiac-landings"
 import AntarcticaCruiseFAQ from "./component/antarctica-cruise-faq"
+import AntarcticaPhotographyGuide from "./component/antarctica-photography-guide"
+import AntarcticaFirstTimeTravelers from "./component/first-time-antarctica-cruise"
+import HXCabinsGuide from "./component/hx-cabins"
+import HXShipsGuide from "./component/hx-expeditions-ships"
 
 function App() {
   return (
@@ -64,6 +68,30 @@ function App() {
         <Route
           path="/antarctica-cruise-faq"
           element={<AntarcticaCruiseFAQ />}
+        />
+
+        {/* Page 9 */}
+        <Route
+          path="/antarctica-photography-guide"
+          element={<AntarcticaPhotographyGuide />}
+        />
+
+        {/* Page 10 */}
+        <Route
+          path="/first-time-antarctica-cruise"
+          element={<AntarcticaFirstTimeTravelers />}
+        />
+
+        {/* Page 11 */}
+        <Route
+          path="/hx-expeditions-ships"
+          element={<HXShipsGuide />}
+        />
+
+        {/* Page 12 */}
+        <Route
+          path="/hx-cabins"
+          element={<HXCabinsGuide />}
         />
 
       </Routes>

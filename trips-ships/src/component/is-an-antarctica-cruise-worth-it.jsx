@@ -150,12 +150,12 @@ export default function IsAntarcticaCruiseWorthIt() {
       {/* ================= HERO + NAV ================= */}
       <header className="tsa_hero">
         {/* Background media layer — replace src with your own footage/photo */}
-        <div className="tsa_hero_media">
+        {/* <div className="tsa_hero_media">
           <video autoPlay muted loop playsInline poster="https://placehold.co/1600x900/0f1c2e/1c2f4a?text=Antarctica+Hero+Poster">
             <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
           </video>
         </div>
-        <div className="tsa_hero_scrim" />
+        <div className="tsa_hero_scrim" /> */}
 
         <nav className="tsa_nav">
           <div className="tsa_logo">TRIPS &amp; SHIPS</div>

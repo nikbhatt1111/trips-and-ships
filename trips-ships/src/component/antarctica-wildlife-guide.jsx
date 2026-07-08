@@ -612,11 +612,6 @@ export default function AntarcticaWildlifeGuide() {
       <section className="tsa_section tsa_quote_section">
         <div className="tsa_wrap tsa_reveal">
           <div className="tsa_quote_card">
-            <div className="tsa_quote_portrait_wrap">
-              <div className="tsa_quote_portrait_ring">
-                <img className="tsa_quote_portrait" src={PLACEHOLDER_MEDIA.portrait} alt="Portrait of Angela Hughes, CEO of Trips & Ships Luxury Travel" />
-              </div>
-            </div>
             <div className="tsa_quote_mark">
               <Sparkles size={32} />
             </div>
@@ -679,10 +674,10 @@ export default function AntarcticaWildlifeGuide() {
         <div className="tsa_wrap tsa_reveal">
           <div className="tsa_section_head">
             <div className="tsa_eyebrow tsa_eyebrow_center">
-              <Play size={14} /> WATCH
+              <Play size={14} /> WATCH WILDLIFE
             </div>
-            <h2>Life Aboard Your Expedition Ship</h2>
-            <p>Between shore landings and Zodiac cruises, see what a day at sea looks like — from observation decks to evening naturalist briefings.</p>
+            <h2>Watch Antarctica's Wildlife in Action</h2>
+            <p>Experience the unforgettable moments that make Antarctica one of the world's greatest wildlife destinations—from curious penguins and resting leopard seals to breaching humpback whales and soaring seabirds.</p>
           </div>
           <div className="tsa_reel_grid">
             <div className="tsa_reel_media"
@@ -697,7 +692,7 @@ export default function AntarcticaWildlifeGuide() {
                   ? "https://www.youtube.com/embed/YtAL8y2lACs?si=XERQ-OcrTlAIBgua"
                   : "https://www.youtube.com/embed/YtAL8y2lACs?si=XERQ-OcrTlAIBgua"
               }
-              title="Life Aboard Expedition"
+              title="Antarctica Wildlife Encounters"
               allow="autoplay; encrypted-media; picture-in-picture"
               allowFullScreen
             />
@@ -705,26 +700,47 @@ export default function AntarcticaWildlifeGuide() {
 
             <div className="tsa_reel_stats">
               <div className="tsa_reel_stat">
-                <div className="tsa_reel_stat_icon"><Binoculars size={18} /></div>
+                <div className="tsa_reel_stat_icon">
+                  <Binoculars size={18} />
+                </div>
                 <div>
-                  <div className="tsa_reel_stat_title">Observation Decks</div>
-                  <div className="tsa_reel_stat_label">Open-air decks for spotting whales and seabirds anytime</div>
+                  <div className="tsa_reel_stat_title">
+                    Penguin Colonies
+                  </div>
+                  <div className="tsa_reel_stat_label">
+                    Observe Gentoo, Adélie, and Chinstrap penguins nesting, feeding, and caring for their chicks.
+                  </div>
                 </div>
               </div>
+
               <div className="tsa_reel_stat">
-                <div className="tsa_reel_stat_icon"><Anchor size={18} /></div>
+                <div className="tsa_reel_stat_icon">
+                  <Anchor size={18} />
+                </div>
                 <div>
-                  <div className="tsa_reel_stat_title">Zodiac Launch Points</div>
-                  <div className="tsa_reel_stat_label">Small-group landings staged directly from the ship</div>
+                  <div className="tsa_reel_stat_title">
+                    Whale Encounters
+                  </div>
+                  <div className="tsa_reel_stat_label">
+                    Watch humpback whales breach, minke whales glide through sea ice, and orcas patrol icy channels.
+                  </div>
                 </div>
               </div>
+
               <div className="tsa_reel_stat">
-                <div className="tsa_reel_stat_icon"><UtensilsCrossed size={18} /></div>
+                <div className="tsa_reel_stat_icon">
+                  <UtensilsCrossed size={18} />
+                </div>
                 <div>
-                  <div className="tsa_reel_stat_title">Evening Briefings</div>
-                  <div className="tsa_reel_stat_label">Naturalists recap the day's wildlife over dinner</div>
+                  <div className="tsa_reel_stat_title">
+                    Seals & Seabirds
+                  </div>
+                  <div className="tsa_reel_stat_label">
+                    Spot leopard seals, Weddell seals, wandering albatrosses, petrels, and skuas throughout your voyage.
+                  </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -839,37 +855,37 @@ export default function AntarcticaWildlifeGuide() {
         <div className="tsa_wrap tsa_reveal">
           <div className="tsa_section_head">
             <div className="tsa_eyebrow tsa_eyebrow_center">
-              <Camera size={14} /> WILDLIFE MOMENTS
+              <Camera size={14} /> WILDLIFE GALLERY
             </div>
-            <h2>Captured on Recent Expeditions</h2>
-            <p>Scroll through a few of the encounters guests have photographed along the Peninsula. Swap in your own gallery whenever you're ready.</p>
+            <h2>Iconic Antarctic Wildlife You'll Encounter</h2>
+            <p>Every expedition offers unique wildlife sightings. Browse some of Antarctica's most remarkable animals that photographers and travelers regularly encounter throughout the expedition season.</p>
           </div>
           <div className="tsa_filmstrip_wrap">
             <div className="tsa_filmstrip">
               <div className="tsa_filmstrip_frame">
                 <img src="/assets/antarctica_wildlife_guide_1.jpg" alt="Gentoo penguin colony on rocky shoreline" />
-                <span className="tsa_filmstrip_tag">Gentoo Colony</span>
-                <div className="tsa_filmstrip_caption">Chinstrap Point, Antarctic Peninsula</div>
+                <span className="tsa_filmstrip_tag">Gentoo Penguins</span>
+                <div className="tsa_filmstrip_caption">Curious and friendly penguins commonly seen across the Antarctic Peninsula.</div>
               </div>
               <div className="tsa_filmstrip_frame">
                 <img src="/assets/antarctica_wildlife_guide_2.jpg" alt="Leopard seal resting on an ice floe" />
                 <span className="tsa_filmstrip_tag">Leopard Seal</span>
-                <div className="tsa_filmstrip_caption">Resting between hunts near the ice edge</div>
+                <div className="tsa_filmstrip_caption">Antarctica's apex predator often spotted relaxing on floating ice between hunts.</div>
               </div>
               <div className="tsa_filmstrip_frame">
                 <img src="/assets/antarctica_wildlife_guide_3.jpg" alt="Orca pod swimming near the ship" />
                 <span className="tsa_filmstrip_tag">Orca Pod</span>
-                <div className="tsa_filmstrip_caption">A pod spotted from the observation deck</div>
+                <div className="tsa_filmstrip_caption">Powerful killer whales occasionally hunt cooperatively through icy channels.</div>
               </div>
               <div className="tsa_filmstrip_frame">
                 <img src="/assets/antarctica_wildlife_guide_4.jpg" alt="Wandering albatross in flight" />
                 <span className="tsa_filmstrip_tag">Wandering Albatross</span>
-                <div className="tsa_filmstrip_caption">Following the ship over open water</div>
+                <div className="tsa_filmstrip_caption">One of the world's largest flying birds, effortlessly gliding above the Southern Ocean.</div>
               </div>
               <div className="tsa_filmstrip_frame">
                 <img src="/assets/antarctica_wildlife_guide_5.jpg" alt="Humpback whale tail diving" />
                 <span className="tsa_filmstrip_tag">Humpback Whale</span>
-                <div className="tsa_filmstrip_caption">A fluke-up dive during a Zodiac cruise</div>
+                <div className="tsa_filmstrip_caption">Late-season expeditions offer spectacular whale sightings and unforgettable photography opportunities.</div>
               </div>
             </div>
           </div>
