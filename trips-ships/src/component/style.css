@@ -240,10 +240,7 @@ body {
     }
 }
 
-/* ---------------------------------------------------------------
-   THEME TOGGLE — sun/moon pill switch, reusable on every page.
-   Usage: <ThemeToggle theme={theme} onToggle={...} />
----------------------------------------------------------------- */
+/* THEME TOGGLE */
 .tsa_theme_toggle {
     position: relative;
     width: 56px;
@@ -280,8 +277,6 @@ body {
     color: #8fb4e8;
 }
 
-/* Floating variant used once scrolled past the dark hero, so the
-   control stays legible on light section backgrounds too. */
 .tsa_theme_toggle_float {
     position: fixed;
     top: 20px;
@@ -560,7 +555,6 @@ body {
     font-family: var(--tsa-font-display);
     font-size: 30px;
     color: var(--tsa-green);
-    /* min-width: 30%; */
     transition: var(--tsa-transition);
     white-space: nowrap;
 }
@@ -581,11 +575,7 @@ body {
     }
 }
 
-/* ---------------------------------------------------------------
-   MEDIA — image gallery + video block, shared across pages.
-   Drop real photo/video URLs into the JSX; the styling here
-   handles aspect ratio, captions, and the play-button overlay.
----------------------------------------------------------------- */
+/* MEDIA — image gallery + video block, shared across pages */
 .tsa_media_grid {
     display: grid;
     grid-template-columns: 1.4fr 1fr 1fr;
@@ -641,6 +631,13 @@ body {
         grid-column: 1 / 3;
         grid-row: auto;
     }
+}
+
+.tsa_video_iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
 }
 
 .tsa_video_card {
@@ -1295,10 +1292,7 @@ body {
     }
 }
 
-/* ---------------------------------------------------------------
-   TIMELINE — used for "a day in the life" / itinerary style
-   content (page 2). A vertical rail with time-stamped stops.
----------------------------------------------------------------- */
+/* TIMELINE */
 .tsa_timeline {
     max-width: 720px;
     margin: 0 auto;
@@ -1356,9 +1350,7 @@ body {
     color: var(--tsa-text-muted);
 }
 
-/* ---------------------------------------------------------------
-   COMPARISON ROWS — luxury vs traditional, side-by-side check/x
----------------------------------------------------------------- */
+/* COMPARISON ROWS */
 .tsa_compare_grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1412,7 +1404,7 @@ body {
     }
 }
 
-/* PULL QUOTE / TESTIMONIAL STRIP (page 2 emotional-impact section) */
+/* WORD STRIP */
 .tsa_word_strip {
     display: flex;
     flex-wrap: wrap;
@@ -1578,4 +1570,255 @@ body {
         transform: none;
         transition: none;
     }
+}
+
+/* ---------------------------------------------------------------
+   ADDED FOR: Is an Antarctica Cruise Worth It — page-specific media
+   Purely additive — no existing selectors above are modified.
+---------------------------------------------------------------- */
+
+/* HERO background video/image, sits behind the existing nav + hero copy */
+.tsa_hero_media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.tsa_hero_media video,
+.tsa_hero_media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: .5;
+}
+
+.tsa_hero_scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, var(--tsa-bg-dark) 0%, #0f1c2e99 45%, #0f1c2e99 60%, var(--tsa-bg-dark2) 100%);
+}
+
+/* SPLIT LAYOUT — content on one side, stacked photo frames on the other.
+   Used by "A Day in the Life"; drop into any section needing a
+   left/right text + image pairing. */
+.tsa_split_layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+}
+
+.tsa_split_media {
+    position: relative;
+    height: 420px;
+}
+
+.tsa_split_media_frame {
+    position: absolute;
+    border-radius: var(--tsa-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--tsa-shadow-lg);
+}
+
+.tsa_split_media_frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.tsa_split_media_frame.back {
+    top: 0;
+    right: 0;
+    width: 78%;
+    height: 78%;
+}
+
+.tsa_split_media_frame.front {
+    bottom: 0;
+    left: 0;
+    width: 60%;
+    height: 60%;
+    border: 6px solid var(--tsa-card-bg);
+}
+
+.tsa_split_media_accent {
+    position: absolute;
+    bottom: -18px;
+    left: -18px;
+    width: 120px;
+    height: 120px;
+    background: var(--tsa-green);
+    border-radius: var(--tsa-radius-lg);
+    z-index: -1;
+    opacity: .85;
+}
+
+@media (max-width: 900px) {
+    .tsa_split_layout {
+        grid-template-columns: 1fr;
+    }
+
+    .tsa_split_media {
+        height: 320px;
+        margin-top: 12px;
+    }
+}
+
+
+/* =====================================================
+   THE LAYERING SYSTEM
+   ===================================================== */
+
+.tsa_photo_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.tsa_photo_card {
+    background: var(--tsa-bg-card);
+    border: 1px solid var(--tsa-border);
+    border-radius: 24px;
+    overflow: hidden;
+    transition: .35s;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .06);
+    height: 100%;
+}
+
+.tsa_photo_card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 55px rgba(0, 0, 0, .12);
+}
+
+.tsa_photo_card_img {
+    width: 100%;
+    height: 260px;
+    display: block;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.tsa_photo_card:hover .tsa_photo_card_img {
+    transform: scale(1.08);
+}
+
+.tsa_photo_card_body {
+    padding: 26px;
+}
+
+.tsa_photo_card_body h4 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--tsa-navy);
+    margin-bottom: 14px;
+}
+
+.tsa_photo_card_body p {
+    margin: 0;
+    color: var(--tsa-text);
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.tsa_photo_label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #edf8ff;
+    color: #0d4d7d;
+    padding: 7px 15px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.tsa_photo_list {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tsa_photo_list span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--tsa-text);
+    font-size: 15px;
+}
+
+.tsa_photo_list svg {
+    color: #18b36b;
+    flex-shrink: 0;
+}
+
+@media (max-width:991px) {
+
+    .tsa_photo_grid {
+        gap: 22px;
+    }
+
+    .tsa_photo_card_img {
+        height: 220px;
+    }
+
+    .tsa_photo_card_body {
+        padding: 22px;
+    }
+
+    .tsa_photo_card_body h4 {
+        font-size: 22px;
+    }
+
+}
+
+@media (max-width:767px) {
+
+    .tsa_photo_grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .tsa_photo_card {
+        border-radius: 20px;
+    }
+
+    .tsa_photo_card_img {
+        height: 220px;
+    }
+
+    .tsa_photo_card_body {
+        padding: 20px;
+    }
+
+    .tsa_photo_card_body h4 {
+        font-size: 20px;
+    }
+
+    .tsa_photo_card_body p {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+}
+
+@media (max-width:480px) {
+
+    .tsa_photo_card_img {
+        height: 190px;
+    }
+
+    .tsa_photo_card_body {
+        padding: 18px;
+    }
+
+    .tsa_photo_card_body h4 {
+        font-size: 18px;
+    }
+
 }

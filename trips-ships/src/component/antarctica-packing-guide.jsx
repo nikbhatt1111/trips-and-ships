@@ -19,6 +19,7 @@ import {
   Battery,
   Layers,
   Luggage,
+  Play,
 } from "lucide-react";
 
 /**
@@ -26,6 +27,15 @@ import {
  * Uses the shared .tsa_* design system (see accompanying CSS).
  * Content is written directly into JSX sections rather than mapped
  * from data arrays, per project requirements.
+ *
+ * MEDIA ADDED IN THIS VERSION (different sections than the other pages):
+ *  1. THE LAYERING SYSTEM   — photo-topped card grid (.tsa_photo_grid, new)
+ *  2. PACKING BY ACTIVITY   — left/right split: list (left) + stacked photos
+ *                             (right), reusing .tsa_split_layout already
+ *                             defined in style.css
+ *  3. SEASONAL PACKING EXPLORER — inline video below the month tabs,
+ *                             reusing .tsa_video_card already defined
+ * All placeholder URLs are marked below — swap for your own assets.
  */
 
 const JSON_LD = `{
@@ -150,6 +160,8 @@ export default function AntarcticaPackingGuide() {
   const [theme, setTheme] = useState("light");
   const [activeMonth, setActiveMonth] = useState(1); // 0=Nov .. 4=Mar
   const [openFaq, setOpenFaq] = useState({});
+  const [videoPlaying, setVideoPlaying] = useState(false);
+  const videoRef = useRef(null);
   const rootRef = useScrollReveal();
 
   useEffect(() => {
@@ -162,6 +174,11 @@ export default function AntarcticaPackingGuide() {
 
   const toggleFaq = (key) =>
     setOpenFaq((prev) => ({ ...prev, [key]: !prev[key] }));
+
+  const handlePlayVideo = () => {
+    setVideoPlaying(true);
+    videoRef.current?.play();
+  };
 
   return (
     <div className="tsa_page" data-theme={theme} ref={rootRef}>
@@ -296,39 +313,161 @@ export default function AntarcticaPackingGuide() {
         </div>
       </section>
 
-      {/* ================= THE LAYERING SYSTEM (ICON GRID) ================= */}
+      {/* ================= THE LAYERING SYSTEM (PHOTO CARD GRID) ================= */}
       <section className="tsa_section">
         <div className="tsa_wrap tsa_reveal">
           <div className="tsa_section_head">
-            <h2>The Layering System</h2>
-            <p>The most effective way to stay comfortable in Antarctica is by using a three-layer clothing system.</p>
+            <div className="tsa_eyebrow tsa_eyebrow_center">
+              <Layers size={14} /> THE LAYERING SYSTEM
+            </div>
+
+            <h2>Dress in Layers, Not Heavy Coats</h2>
+
+            <p>
+              Antarctica isn't about wearing one massive winter jacket. The secret is
+              a flexible three-layer clothing system that keeps you warm, dry, and
+              comfortable as weather conditions change throughout the day. Most luxury
+              expedition cruises also provide an expedition parka, so you only need to
+              bring the right layers underneath.
+            </p>
           </div>
-          <div className="tsa_icon_grid">
-            <div className="tsa_icon_card">
-              <div className="tsa_icon_circle"><Layers size={20} /></div>
-              <h4>Base Layer</h4>
-              <p>Sits against your skin and wicks away moisture. Choose merino wool or synthetic thermals — avoid cotton.</p>
+
+          <div className="tsa_photo_grid">
+
+            {/* Base Layer */}
+            <div className="tsa_photo_card">
+              <img
+                className="tsa_photo_card_img"
+                src="/assets/antarctica_packing_guide_1.jpg"
+                alt="Merino wool thermal base layer for Antarctica"
+              />
+
+              <div className="tsa_photo_card_body">
+
+                <div className="tsa_photo_label">
+                  <Shirt size={14} />
+                  Layer 1
+                </div>
+
+                <h4>Base Layer</h4>
+
+                <p>
+                  Your base layer sits directly against your skin and removes moisture,
+                  helping you stay warm during Zodiac cruises and shore landings.
+                </p>
+
+                <div className="tsa_photo_list">
+                  <span><Check size={16} /> Merino wool thermals</span>
+                  <span><Check size={16} /> Synthetic performance fabric</span>
+                  <span><Check size={16} /> Lightweight & breathable</span>
+                  <span><X size={16} /> Avoid cotton clothing</span>
+                </div>
+
+              </div>
             </div>
-            <div className="tsa_icon_card">
-              <div className="tsa_icon_circle"><Shirt size={20} /></div>
-              <h4>Mid Layer</h4>
-              <p>Traps body heat with fleece, down, or synthetic insulated jackets, providing warmth without restricting movement.</p>
+
+            {/* Mid Layer */}
+            <div className="tsa_photo_card">
+              <img
+                className="tsa_photo_card_img"
+                src="/assets/antarctica_packing_guide_2.jpg"
+                alt="Fleece jacket for Antarctica"
+              />
+
+              <div className="tsa_photo_card_body">
+
+                <div className="tsa_photo_label">
+                  <Snowflake size={14} />
+                  Layer 2
+                </div>
+
+                <h4>Mid Layer</h4>
+
+                <p>
+                  The insulating layer traps body heat while remaining breathable.
+                  Choose fleece or lightweight down depending on your comfort level.
+                </p>
+
+                <div className="tsa_photo_list">
+                  <span><Check size={16} /> Fleece jacket</span>
+                  <span><Check size={16} /> Down or synthetic insulation</span>
+                  <span><Check size={16} /> Easy to remove indoors</span>
+                  <span><Check size={16} /> Warm without bulk</span>
+                </div>
+
+              </div>
             </div>
-            <div className="tsa_icon_card">
-              <div className="tsa_icon_circle"><Snowflake size={20} /></div>
-              <h4>Outer Layer</h4>
-              <p>Protects against wind, snow, rain, and sea spray. Most cruise lines provide the parka; bring your own waterproof pants.</p>
+
+            {/* Outer Layer */}
+            <div className="tsa_photo_card">
+              <img
+                className="tsa_photo_card_img"
+                src="/assets/antarctica_packing_guide_3.jpg"
+                alt="Waterproof expedition shell jacket"
+              />
+
+              <div className="tsa_photo_card_body">
+
+                <div className="tsa_photo_label">
+                  <Compass size={14} />
+                  Layer 3
+                </div>
+
+                <h4>Waterproof Outer Layer</h4>
+
+                <p>
+                  Your outer shell protects you from wind, snow, rain, and sea spray
+                  during every expedition landing and Zodiac excursion.
+                </p>
+
+                <div className="tsa_photo_list">
+                  <span><Check size={16} /> Waterproof shell</span>
+                  <span><Check size={16} /> Waterproof pants</span>
+                  <span><Check size={16} /> Windproof protection</span>
+                  <span><Check size={16} /> Essential for shore landings</span>
+                </div>
+
+              </div>
             </div>
-            <div className="tsa_icon_card">
-              <div className="tsa_icon_circle"><ThermometerSun size={20} /></div>
-              <h4>What Cruises Provide</h4>
-              <p>Many luxury operators include an expedition parka, waterproof boots, trekking poles, and life jackets.</p>
+
+            {/* Included by Cruise */}
+            <div className="tsa_photo_card">
+              <img
+                className="tsa_photo_card_img"
+                src="/assets/antarctica_packing_guide_4.jpg"
+                alt="Expedition parka and boots"
+              />
+
+              <div className="tsa_photo_card_body">
+
+                <div className="tsa_photo_label">
+                  <Backpack size={14} />
+                  Usually Included
+                </div>
+
+                <h4>What Your Cruise Usually Provides</h4>
+
+                <p>
+                  Most luxury Antarctica cruise operators include expedition gear,
+                  reducing the amount of clothing you need to purchase before your
+                  trip.
+                </p>
+
+                <div className="tsa_photo_list">
+                  <span><Check size={16} /> Expedition parka</span>
+                  <span><Check size={16} /> Waterproof boots</span>
+                  <span><Check size={16} /> Life jacket</span>
+                  <span><Check size={16} /> Trekking poles (select operators)</span>
+                </div>
+
+              </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* ================= SEASONAL PACKING EXPLORER ================= */}
+      {/* ================= SEASONAL PACKING EXPLORER (+ INLINE VIDEO) ================= */}
       <section className="tsa_section tsa_section_soft">
         <div className="tsa_wrap tsa_reveal">
           <div className="tsa_section_head">
@@ -594,33 +733,53 @@ export default function AntarcticaPackingGuide() {
         </div>
       </section>
 
-      {/* ================= PACKING BY ACTIVITY ================= */}
+      {/* ================= PACKING BY ACTIVITY (SPLIT LAYOUT + PHOTOS) ================= */}
       <section className="tsa_section">
         <div className="tsa_wrap tsa_reveal">
           <div className="tsa_section_head">
             <h2>Packing by Activity</h2>
             <p>What to bring changes depending on where your day takes you.</p>
           </div>
-          <div className="tsa_icon_grid">
-            <div className="tsa_icon_card">
-              <div className="tsa_icon_circle"><Compass size={20} /></div>
-              <h4>Zodiac Cruises</h4>
-              <p>Waterproof gloves, warm hat, camera, dry bag, and sunglasses for spray-heavy excursions.</p>
+
+          <div className="tsa_split_layout">
+            <div>
+              <div className="tsa_timeline">
+                <div className="tsa_timeline_item">
+                  <div className="tsa_timeline_dot" />
+                  <div className="tsa_timeline_time"><Compass size={12} style={{ verticalAlign: "middle", marginRight: 6 }} />Zodiac Cruises</div>
+                  <h4>Spray-Heavy Excursions</h4>
+                  <p>Waterproof gloves, warm hat, camera, dry bag, and sunglasses.</p>
+                </div>
+                <div className="tsa_timeline_item">
+                  <div className="tsa_timeline_dot" />
+                  <div className="tsa_timeline_time"><Snowflake size={12} style={{ verticalAlign: "middle", marginRight: 6 }} />Shore Landings</div>
+                  <h4>On the Antarctic Continent</h4>
+                  <p>Waterproof boots, waterproof pants, layered clothing, and your expedition parka.</p>
+                </div>
+                <div className="tsa_timeline_item">
+                  <div className="tsa_timeline_dot" />
+                  <div className="tsa_timeline_time"><Users size={12} style={{ verticalAlign: "middle", marginRight: 6 }} />Onboard</div>
+                  <h4>Dining, Lectures &amp; the Spa</h4>
+                  <p>Comfortable casual clothing for dining, lectures, observation lounges, and the spa.</p>
+                </div>
+                <div className="tsa_timeline_item">
+                  <div className="tsa_timeline_dot" />
+                  <div className="tsa_timeline_time"><Backpack size={12} style={{ verticalAlign: "middle", marginRight: 6 }} />Daypack Essentials</div>
+                  <h4>Ready for Anything</h4>
+                  <p>Camera, water bottle, gloves, hat, and extra layers, all in a waterproof backpack or dry bag.</p>
+                </div>
+              </div>
             </div>
-            <div className="tsa_icon_card">
-              <div className="tsa_icon_circle"><Snowflake size={20} /></div>
-              <h4>Shore Landings</h4>
-              <p>Waterproof boots, waterproof pants, layered clothing, and your expedition parka.</p>
-            </div>
-            <div className="tsa_icon_card">
-              <div className="tsa_icon_circle"><Users size={20} /></div>
-              <h4>Onboard</h4>
-              <p>Comfortable casual clothing for dining, lectures, observation lounges, and the spa.</p>
-            </div>
-            <div className="tsa_icon_card">
-              <div className="tsa_icon_circle"><Backpack size={20} /></div>
-              <h4>Daypack Essentials</h4>
-              <p>Camera, water bottle, gloves, hat, and extra layers, all in a waterproof backpack or dry bag.</p>
+
+            {/* Stacked photo frames — replace both src attributes with real photography */}
+            <div className="tsa_split_media">
+              <div className="tsa_split_media_accent" />
+              <div className="tsa_split_media_frame back">
+                <img src="/assets/antarctica_packing_guide_5.jpg" alt="Zodiac excursion gear laid out" />
+              </div>
+              <div className="tsa_split_media_frame front">
+                <img src="/assets/antarctica_packing_guide_6.jpg" alt="Packed waterproof daypack" />
+              </div>
             </div>
           </div>
         </div>

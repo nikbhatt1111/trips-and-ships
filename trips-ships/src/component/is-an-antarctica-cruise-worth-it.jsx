@@ -16,6 +16,7 @@ import {
   Waves,
   Sparkles,
   Ship,
+  Play,
 } from "lucide-react";
 
 /**
@@ -23,6 +24,12 @@ import {
  * Uses the shared .tsa_* design system (see accompanying CSS).
  * Content is written directly into JSX sections rather than mapped
  * from data arrays, per project requirements.
+ *
+ * MEDIA ADDED IN THIS VERSION:
+ *  1. HERO        — background video/image behind the nav + headline
+ *  2. DAY-IN-LIFE — left/right split: timeline (left) + stacked photos (right)
+ *  3. WILDLIFE    — inline playable video card below the compare columns
+ * All placeholder URLs are marked below — swap for your own assets.
  */
 
 const JSON_LD = `{
@@ -116,7 +123,9 @@ function ThemeToggle({ theme, onToggle, floating }) {
 export default function IsAntarcticaCruiseWorthIt() {
   const [theme, setTheme] = useState("light");
   const [openFaq, setOpenFaq] = useState({});
+  const [videoPlaying, setVideoPlaying] = useState(false);
   const rootRef = useScrollReveal();
+  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -129,12 +138,25 @@ export default function IsAntarcticaCruiseWorthIt() {
   const toggleFaq = (key) =>
     setOpenFaq((prev) => ({ ...prev, [key]: !prev[key] }));
 
+  const handlePlayVideo = () => {
+    setVideoPlaying(true);
+    videoRef.current?.play();
+  };
+
   return (
     <div className="tsa_page" data-theme={theme} ref={rootRef}>
       <ThemeToggle theme={theme} onToggle={() => setTheme(theme === "dark" ? "light" : "dark")} floating />
 
       {/* ================= HERO + NAV ================= */}
       <header className="tsa_hero">
+        {/* Background media layer — replace src with your own footage/photo */}
+        <div className="tsa_hero_media">
+          <video autoPlay muted loop playsInline poster="https://placehold.co/1600x900/0f1c2e/1c2f4a?text=Antarctica+Hero+Poster">
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div className="tsa_hero_scrim" />
+
         <nav className="tsa_nav">
           <div className="tsa_logo">TRIPS &amp; SHIPS</div>
           <ul className="tsa_nav_links">
@@ -279,36 +301,52 @@ export default function IsAntarcticaCruiseWorthIt() {
         </div>
       </section>
 
-      {/* ================= A DAY IN THE LIFE (TIMELINE) ================= */}
+      {/* ================= A DAY IN THE LIFE (TIMELINE + SPLIT MEDIA) ================= */}
       <section className="tsa_section tsa_section_soft">
         <div className="tsa_wrap tsa_reveal">
           <div className="tsa_section_head">
             <h2>What You'll Experience Each Day</h2>
             <p>Every itinerary differs depending on weather and wildlife, but a typical expedition day may include:</p>
           </div>
-          <div className="tsa_timeline">
-            <div className="tsa_timeline_item">
-              <div className="tsa_timeline_dot" />
-              <div className="tsa_timeline_time">Morning</div>
-              <h4>Scenic Cruising &amp; Shore Landing</h4>
-              <p>Scenic cruising, whale sightings, and a guided shore landing led by expedition naturalists.</p>
+
+          <div className="tsa_split_layout">
+            <div>
+              <div className="tsa_timeline">
+                <div className="tsa_timeline_item">
+                  <div className="tsa_timeline_dot" />
+                  <div className="tsa_timeline_time">Morning</div>
+                  <h4>Scenic Cruising &amp; Shore Landing</h4>
+                  <p>Scenic cruising, whale sightings, and a guided shore landing led by expedition naturalists.</p>
+                </div>
+                <div className="tsa_timeline_item">
+                  <div className="tsa_timeline_dot" />
+                  <div className="tsa_timeline_time">Afternoon</div>
+                  <h4>Zodiac Cruise &amp; Wildlife Viewing</h4>
+                  <p>Zodiac cruising, wildlife viewing, photography opportunities, and optional hiking.</p>
+                </div>
+                <div className="tsa_timeline_item">
+                  <div className="tsa_timeline_dot" />
+                  <div className="tsa_timeline_time">Evening</div>
+                  <h4>Recap, Lectures &amp; Fine Dining</h4>
+                  <p>An expedition recap, expert lectures, fine dining, and relaxation in the observation lounge.</p>
+                </div>
+              </div>
+              <p style={{ textAlign: "center", marginTop: 24, color: "var(--tsa-text-muted)", fontStyle: "italic" }}>
+                No two days are ever the same.
+              </p>
             </div>
-            <div className="tsa_timeline_item">
-              <div className="tsa_timeline_dot" />
-              <div className="tsa_timeline_time">Afternoon</div>
-              <h4>Zodiac Cruise &amp; Wildlife Viewing</h4>
-              <p>Zodiac cruising, wildlife viewing, photography opportunities, and optional hiking.</p>
-            </div>
-            <div className="tsa_timeline_item">
-              <div className="tsa_timeline_dot" />
-              <div className="tsa_timeline_time">Evening</div>
-              <h4>Recap, Lectures &amp; Fine Dining</h4>
-              <p>An expedition recap, expert lectures, fine dining, and relaxation in the observation lounge.</p>
+
+            {/* Stacked photo frames — replace both src attributes with real photography */}
+            <div className="tsa_split_media">
+              <div className="tsa_split_media_accent" />
+              <div className="tsa_split_media_frame back">
+                <img src="/assets/Is_an_Antarctica_Cruise_Worth_It_2.jpg" alt="Zodiac shore landing" />
+              </div>
+              <div className="tsa_split_media_frame front">
+                <img src="/assets/Is_an_Antarctica_Cruise_Worth_It_1.jpg" alt="Evening fine dining aboard ship" />
+              </div>
             </div>
           </div>
-          <p style={{ textAlign: "center", marginTop: 24, color: "var(--tsa-text-muted)", fontStyle: "italic" }}>
-            No two days are ever the same.
-          </p>
         </div>
       </section>
 
@@ -341,7 +379,7 @@ export default function IsAntarcticaCruiseWorthIt() {
         </div>
       </section>
 
-      {/* ================= WORTH IT FOR WILDLIFE LOVERS (compare cols) ================= */}
+      {/* ================= WORTH IT FOR WILDLIFE LOVERS (compare cols + video) ================= */}
       <section className="tsa_section tsa_section_soft">
         <div className="tsa_wrap tsa_reveal">
           <div className="tsa_section_head">
@@ -366,6 +404,25 @@ export default function IsAntarcticaCruiseWorthIt() {
               <div className="tsa_compare_row"><Check size={16} /> Whales surfacing beside the ship</div>
               <div className="tsa_compare_row"><Check size={16} /> Golden polar light &amp; reflections</div>
             </div>
+          </div>
+
+          <div
+            className="tsa_video_card" style={{ marginTop: 40 }}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+          >
+            <iframe
+              key={hovered ? "play" : "pause"}
+              className="tsa_video_iframe"
+              src={
+                hovered
+                  ? "https://www.youtube.com/embed/YtAL8y2lACs?si=XERQ-OcrTlAIBgua"
+                  : "https://www.youtube.com/embed/YtAL8y2lACs?si=XERQ-OcrTlAIBgua"
+              }
+              title="Life Aboard Expedition"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowFullScreen
+            />
           </div>
         </div>
       </section>

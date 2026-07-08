@@ -15,6 +15,7 @@ import {
   ThermometerSun,
   Clock,
   Sparkles,
+  Play,
 } from "lucide-react";
 
 /**
@@ -22,7 +23,20 @@ import {
  * Uses the shared .tsa_* design system (see accompanying CSS).
  * Content is written directly into JSX sections rather than mapped
  * from data arrays, per project requirements.
+ *
+ * NOTE: Image/video sources below are placeholders — swap the URLs
+ * in PLACEHOLDER_IMAGES / PLACEHOLDER_VIDEO for real production assets.
  */
+
+const PLACEHOLDER_IMAGES = {
+  heroTall: "https://placehold.co/800x920/0f1c2e/8fb4e8?text=Glacier+%26+Iceberg",
+  gridA: "https://placehold.co/640x420/16243a/8fb4e8?text=Gentoo+Penguins",
+  gridB: "https://placehold.co/640x420/1c2f4a/8fb4e8?text=Humpback+Whale",
+  gridC: "https://placehold.co/640x420/101b2c/8fb4e8?text=Zodiac+Excursion",
+  videoPoster: "https://placehold.co/1280x720/0f1c2e/8fb4e8?text=Watch%3A+A+Day+Aboard+Expedition",
+};
+
+const PLACEHOLDER_VIDEO = "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
 
 const JSON_LD = `{
   "@context":"https://schema.org",
@@ -146,7 +160,9 @@ export default function BestTimeToVisitAntarctica() {
   const [theme, setTheme] = useState("light");
   const [activeMonth, setActiveMonth] = useState(1); // 0=Nov .. 4=Mar
   const [openFaq, setOpenFaq] = useState({});
+  const [videoPlaying, setVideoPlaying] = useState(false);
   const rootRef = useScrollReveal();
+  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -267,8 +283,45 @@ export default function BestTimeToVisitAntarctica() {
         </div>
       </section>
 
-      {/* ================= QUICK ANSWER TABLE ================= */}
+      {/* ================= PHOTO GALLERY (NEW) ================= */}
       <section className="tsa_section tsa_section_soft">
+        <div className="tsa_wrap tsa_reveal">
+          <div className="tsa_section_head">
+            <div className="tsa_eyebrow tsa_eyebrow_center">
+              <Camera size={14} /> ANTARCTICA THROUGH THE SEASONS
+            </div>
+            <h2>See Antarctica Across the Expedition Season</h2>
+            <p>
+              Every month transforms Antarctica in a different way. Early-season snow, bustling penguin colonies, breaching whales, and dramatic sunsets create unforgettable moments from November through March.
+            </p>
+          </div>
+          <div className="tsa_media_grid">
+            <div className="tsa_media_card tall">
+              <img src="/assets/Best_Time_to_Visit_Antarctica_1.jpg" alt="Glacier and iceberg landscape in Antarctica" />
+              <div className="tsa_media_caption">November's pristine snow and towering blue icebergs</div>
+            </div>
+            <div className="tsa_media_card">
+              <img src="/assets/Best_Time_to_Visit_Antarctica_2.jpg" alt="Gentoo penguin colony on the shoreline" />
+              <div className="tsa_media_caption">Thousands of gentoo penguins nesting during the summer</div>
+            </div>
+            <div className="tsa_media_card">
+              <img src="/assets/Best_Time_to_Visit_Antarctica_3.jpg" alt="Humpback whale breaching near the expedition ship" />
+              <div className="tsa_media_caption">Humpback whales return to Antarctic waters from January</div>
+            </div>
+            <div className="tsa_media_card">
+              <img src="/assets/Best_Time_to_Visit_Antarctica_4.jpg" alt="Guests on a zodiac excursion near icebergs" />
+              <div className="tsa_media_caption">Zodiac cruises reveal glaciers, wildlife, and hidden coves</div>
+            </div>
+            <div className="tsa_media_card">
+              <img src="/assets/Best_Time_to_Visit_Antarctica_5.jpg" alt="Guests on a zodiac excursion near icebergs" />
+              <div className="tsa_media_caption">Golden Antarctic sunsets during the late expedition season</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= QUICK ANSWER TABLE ================= */}
+      <section className="tsa_section">
         <div className="tsa_wrap tsa_reveal">
           <div className="tsa_section_head">
             <h2>Quick Answer: What Is the Best Time to Visit Antarctica?</h2>
@@ -298,7 +351,7 @@ export default function BestTimeToVisitAntarctica() {
       </section>
 
       {/* ================= SEASON EXPLAINED (ICON GRID) ================= */}
-      <section className="tsa_section">
+      <section className="tsa_section tsa_section_soft">
         <div className="tsa_wrap tsa_reveal">
           <div className="tsa_section_head">
             <h2>Antarctica Cruise Season Explained</h2>
@@ -330,7 +383,7 @@ export default function BestTimeToVisitAntarctica() {
       </section>
 
       {/* ================= MONTH BY MONTH EXPLORER ================= */}
-      <section className="tsa_section tsa_section_soft">
+      <section className="tsa_section">
         <div className="tsa_wrap tsa_reveal">
           <div className="tsa_section_head">
             <h2>Month-by-Month Guide</h2>
@@ -574,6 +627,37 @@ export default function BestTimeToVisitAntarctica() {
                 </div>
               </div>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* ================= VIDEO: A DAY ABOARD (NEW) ================= */}
+      <section className="tsa_section tsa_section_soft">
+        <div className="tsa_wrap tsa_reveal">
+          <div className="tsa_section_head">
+            <div className="tsa_eyebrow tsa_eyebrow_center">
+              <Play size={14} /> EXPEDITION EXPERIENCE
+            </div>
+            <h2>Experience Antarctica Before You Go</h2>
+            <p>Watch what a typical expedition day feels like—from scenic Drake Passage crossings and zodiac landings to unforgettable wildlife encounters and evenings aboard your expedition ship.</p>
+          </div>
+          <div
+            className="tsa_video_card"
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+          >
+            <iframe
+              key={hovered ? "play" : "pause"}
+              className="tsa_video_iframe"
+              src={
+                hovered
+                  ? "https://www.youtube.com/embed/LKFxnTDyL8Q?autoplay=1&mute=1&rel=0"
+                  : "https://www.youtube.com/embed/LKFxnTDyL8Q?autoplay=0&mute=1&rel=0"
+              }
+              title="Life Aboard Expedition"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowFullScreen
+            />
           </div>
         </div>
       </section>
