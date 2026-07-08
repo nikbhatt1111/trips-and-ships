@@ -18,6 +18,9 @@ import {
   Bird,
   Waves,
   Binoculars,
+  Play,
+  Anchor,
+  UtensilsCrossed,
 } from "lucide-react";
 
 /**
@@ -25,7 +28,29 @@ import {
  * Uses the shared .tsa_* design system (see accompanying CSS).
  * Content is written directly into JSX sections rather than mapped
  * from data arrays, per project requirements.
+ *
+ * NEW IN THIS VERSION:
+ *  - "Life Aboard Your Expedition Ship" video reel spotlight
+ *  - "Wildlife Moments Captured" scrolling filmstrip gallery
+ *  - A ringed portrait added to the existing Expert Quote section
+ * All three use brand-new classes (tsa_reel_*, tsa_filmstrip_*,
+ * tsa_quote_portrait_*) so nothing already in the shared CSS,
+ * and nothing used on other pages, is reused or altered.
+ *
+ * NOTE: every image/video source below is a placeholder — swap
+ * the URLs in PLACEHOLDER_MEDIA for real production assets.
  */
+
+const PLACEHOLDER_MEDIA = {
+  reelPoster: "https://placehold.co/900x675/0f1c2e/8fb4e8?text=Life+Aboard+the+Ship",
+  reelVideo: "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+  portrait: "https://placehold.co/200x200/1c2f4a/8fb4e8?text=A.H.",
+  film1: "https://placehold.co/520x680/16243a/8fb4e8?text=Gentoo+Colony",
+  film2: "https://placehold.co/520x680/101b2c/8fb4e8?text=Leopard+Seal",
+  film3: "https://placehold.co/520x680/1c2f4a/8fb4e8?text=Orca+Pod",
+  film4: "https://placehold.co/520x680/16243a/8fb4e8?text=Albatross",
+  film5: "https://placehold.co/520x680/101b2c/8fb4e8?text=Humpback+Tail",
+};
 
 const JSON_LD = `{
   "@context":"https://schema.org",
@@ -149,7 +174,9 @@ export default function AntarcticaWildlifeGuide() {
   const [theme, setTheme] = useState("light");
   const [activeMonth, setActiveMonth] = useState(1); // 0=Nov .. 4=Mar
   const [openFaq, setOpenFaq] = useState({});
+  const [reelPlaying, setReelPlaying] = useState(false);
   const rootRef = useScrollReveal();
+  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -581,10 +608,15 @@ export default function AntarcticaWildlifeGuide() {
         </div>
       </section>
 
-      {/* ================= EXPERT QUOTE ================= */}
+      {/* ================= EXPERT QUOTE (now with ringed portrait) ================= */}
       <section className="tsa_section tsa_quote_section">
         <div className="tsa_wrap tsa_reveal">
           <div className="tsa_quote_card">
+            <div className="tsa_quote_portrait_wrap">
+              <div className="tsa_quote_portrait_ring">
+                <img className="tsa_quote_portrait" src={PLACEHOLDER_MEDIA.portrait} alt="Portrait of Angela Hughes, CEO of Trips & Ships Luxury Travel" />
+              </div>
+            </div>
             <div className="tsa_quote_mark">
               <Sparkles size={32} />
             </div>
@@ -642,8 +674,64 @@ export default function AntarcticaWildlifeGuide() {
         </div>
       </section>
 
-      {/* ================= WILDLIFE SPECIES TABLES ================= */}
+      {/* ================= NEW: LIFE ABOARD YOUR EXPEDITION SHIP (VIDEO REEL) ================= */}
       <section className="tsa_section tsa_section_soft">
+        <div className="tsa_wrap tsa_reveal">
+          <div className="tsa_section_head">
+            <div className="tsa_eyebrow tsa_eyebrow_center">
+              <Play size={14} /> WATCH
+            </div>
+            <h2>Life Aboard Your Expedition Ship</h2>
+            <p>Between shore landings and Zodiac cruises, see what a day at sea looks like — from observation decks to evening naturalist briefings.</p>
+          </div>
+          <div className="tsa_reel_grid">
+            <div className="tsa_reel_media"
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+            >
+            <iframe
+              key={hovered ? "play" : "pause"}
+              className="tsa_video_iframe"
+              src={
+                hovered
+                  ? "https://www.youtube.com/embed/YtAL8y2lACs?si=XERQ-OcrTlAIBgua"
+                  : "https://www.youtube.com/embed/YtAL8y2lACs?si=XERQ-OcrTlAIBgua"
+              }
+              title="Life Aboard Expedition"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+
+            <div className="tsa_reel_stats">
+              <div className="tsa_reel_stat">
+                <div className="tsa_reel_stat_icon"><Binoculars size={18} /></div>
+                <div>
+                  <div className="tsa_reel_stat_title">Observation Decks</div>
+                  <div className="tsa_reel_stat_label">Open-air decks for spotting whales and seabirds anytime</div>
+                </div>
+              </div>
+              <div className="tsa_reel_stat">
+                <div className="tsa_reel_stat_icon"><Anchor size={18} /></div>
+                <div>
+                  <div className="tsa_reel_stat_title">Zodiac Launch Points</div>
+                  <div className="tsa_reel_stat_label">Small-group landings staged directly from the ship</div>
+                </div>
+              </div>
+              <div className="tsa_reel_stat">
+                <div className="tsa_reel_stat_icon"><UtensilsCrossed size={18} /></div>
+                <div>
+                  <div className="tsa_reel_stat_title">Evening Briefings</div>
+                  <div className="tsa_reel_stat_label">Naturalists recap the day's wildlife over dinner</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= WEATHER + WILDLIFE TABLES ================= */}
+      <section className="tsa_section">
         <div className="tsa_wrap tsa_reveal">
           <div className="tsa_section_head">
             <h2>Species Spotlight</h2>
@@ -691,7 +779,7 @@ export default function AntarcticaWildlifeGuide() {
       </section>
 
       {/* ================= WHICH WILDLIFE MATTERS MOST TO YOU ================= */}
-      <section className="tsa_section">
+      <section className="tsa_section tsa_section_soft">
         <div className="tsa_wrap tsa_reveal">
           <div className="tsa_section_head">
             <h2>Which Wildlife Matters Most to You?</h2>
@@ -741,6 +829,48 @@ export default function AntarcticaWildlifeGuide() {
                 <li><Check size={14} /> An extended, wildlife-rich itinerary</li>
                 <li><Check size={14} /> A truly bucket-list expedition</li>
               </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= NEW: WILDLIFE MOMENTS CAPTURED (FILMSTRIP GALLERY) ================= */}
+      <section className="tsa_section">
+        <div className="tsa_wrap tsa_reveal">
+          <div className="tsa_section_head">
+            <div className="tsa_eyebrow tsa_eyebrow_center">
+              <Camera size={14} /> WILDLIFE MOMENTS
+            </div>
+            <h2>Captured on Recent Expeditions</h2>
+            <p>Scroll through a few of the encounters guests have photographed along the Peninsula. Swap in your own gallery whenever you're ready.</p>
+          </div>
+          <div className="tsa_filmstrip_wrap">
+            <div className="tsa_filmstrip">
+              <div className="tsa_filmstrip_frame">
+                <img src="/assets/antarctica_wildlife_guide_1.jpg" alt="Gentoo penguin colony on rocky shoreline" />
+                <span className="tsa_filmstrip_tag">Gentoo Colony</span>
+                <div className="tsa_filmstrip_caption">Chinstrap Point, Antarctic Peninsula</div>
+              </div>
+              <div className="tsa_filmstrip_frame">
+                <img src="/assets/antarctica_wildlife_guide_2.jpg" alt="Leopard seal resting on an ice floe" />
+                <span className="tsa_filmstrip_tag">Leopard Seal</span>
+                <div className="tsa_filmstrip_caption">Resting between hunts near the ice edge</div>
+              </div>
+              <div className="tsa_filmstrip_frame">
+                <img src="/assets/antarctica_wildlife_guide_3.jpg" alt="Orca pod swimming near the ship" />
+                <span className="tsa_filmstrip_tag">Orca Pod</span>
+                <div className="tsa_filmstrip_caption">A pod spotted from the observation deck</div>
+              </div>
+              <div className="tsa_filmstrip_frame">
+                <img src="/assets/antarctica_wildlife_guide_4.jpg" alt="Wandering albatross in flight" />
+                <span className="tsa_filmstrip_tag">Wandering Albatross</span>
+                <div className="tsa_filmstrip_caption">Following the ship over open water</div>
+              </div>
+              <div className="tsa_filmstrip_frame">
+                <img src="/assets/antarctica_wildlife_guide_5.jpg" alt="Humpback whale tail diving" />
+                <span className="tsa_filmstrip_tag">Humpback Whale</span>
+                <div className="tsa_filmstrip_caption">A fluke-up dive during a Zodiac cruise</div>
+              </div>
             </div>
           </div>
         </div>

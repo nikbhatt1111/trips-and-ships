@@ -1822,3 +1822,235 @@ body {
     }
 
 }
+
+
+
+
+
+/* =====================================================
+   NEW — VIDEO REEL SPOTLIGHT
+   Distinct from .tsa_video_card: asymmetric split with
+   a floating pill-shaped play control + stat list beside it.
+   ===================================================== */
+.tsa_reel_grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.tsa_reel_media {
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    box-shadow: var(--tsa-shadow-lg);
+    background: var(--tsa-bg-dark);
+}
+
+.tsa_reel_media img,
+.tsa_reel_media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.tsa_reel_play {
+    position: absolute;
+    left: 22px;
+    bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #ffffffee;
+    padding: 8px 20px 8px 8px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    transition: var(--tsa-transition);
+}
+
+.tsa_reel_play:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--tsa-shadow-lg);
+}
+
+.tsa_reel_play_icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--tsa-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #06281f;
+    flex-shrink: 0;
+}
+
+.tsa_reel_play span {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--tsa-navy);
+    white-space: nowrap;
+}
+
+.tsa_reel_stats {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.tsa_reel_stat {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 18px;
+    border-radius: 16px;
+    background: var(--tsa-navy-soft);
+    transition: var(--tsa-transition);
+}
+
+.tsa_reel_stat:hover {
+    transform: translateX(6px);
+    background: var(--tsa-navy);
+    color: #fff;
+}
+
+.tsa_reel_stat:hover .tsa_reel_stat_label,
+.tsa_reel_stat:hover .tsa_reel_stat_title {
+    color: #fff;
+}
+
+.tsa_reel_stat_icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--tsa-navy);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.tsa_reel_stat_title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--tsa-navy);
+    margin-bottom: 4px;
+    transition: color .2s ease;
+}
+
+.tsa_reel_stat_label {
+    font-size: 13px;
+    color: var(--tsa-text-muted);
+    transition: color .2s ease;
+}
+
+@media (max-width: 900px) {
+    .tsa_reel_grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =====================================================
+   NEW — WILDLIFE FILMSTRIP GALLERY
+   Distinct from .tsa_media_grid: horizontally scrolling,
+   alternating-height frames with floating pill tags.
+   ===================================================== */
+.tsa_filmstrip_wrap {
+    overflow-x: auto;
+    padding: 6px 4px 18px;
+}
+
+.tsa_filmstrip {
+    display: flex;
+    gap: 22px;
+    width: max-content;
+}
+
+.tsa_filmstrip_frame {
+    position: relative;
+    width: 260px;
+    height: 340px;
+    border-radius: 18px;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: var(--tsa-shadow);
+    transition: var(--tsa-transition);
+}
+
+.tsa_filmstrip_frame:nth-child(even) {
+    margin-top: 34px;
+}
+
+.tsa_filmstrip_frame:hover {
+    box-shadow: var(--tsa-shadow-lg);
+    transform: translateY(-4px);
+}
+
+.tsa_filmstrip_frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .5s ease;
+}
+
+.tsa_filmstrip_frame:hover img {
+    transform: scale(1.07);
+}
+
+.tsa_filmstrip_tag {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: #ffffffe6;
+    color: var(--tsa-navy);
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 6px 13px;
+    border-radius: 999px;
+    letter-spacing: .3px;
+}
+
+.tsa_filmstrip_caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 16px;
+    background: var(--tsa-overlay-scrim);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* =====================================================
+   NEW — QUOTE PORTRAIT
+   Small addition to the existing quote section: a ringed
+   portrait above the quote mark. Adds to, doesn't replace.
+   ===================================================== */
+.tsa_quote_portrait_wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 22px;
+}
+
+.tsa_quote_portrait_ring {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(135deg, var(--tsa-green), #ffffff22);
+}
+
+.tsa_quote_portrait {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 3px solid var(--tsa-bg-dark2);
+}
