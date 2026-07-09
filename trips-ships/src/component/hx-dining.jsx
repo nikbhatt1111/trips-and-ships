@@ -302,23 +302,23 @@ export default function HXDiningGuide() {
           </div>
           <div className="tsa_media_grid">
             <div className="tsa_media_card tall">
-              <img src="/assets/HX_Dining_Guide_1.jpg" loading="lazy" alt="Main restaurant table set for dinner aboard an HX ship" />
+              <img src="/assets/HX_Dining_Guide_1.jpg" alt="Main restaurant table set for dinner aboard an HX ship" />
               <div className="tsa_media_caption">The main restaurant serves breakfast, lunch, and dinner daily</div>
             </div>
             <div className="tsa_media_card">
-              <img src="/assets/HX_Dining_Guide_2.jpg" loading="lazy" alt="Fresh seafood plate served aboard HX" />
+              <img src="/assets/HX_Dining_Guide_2.jpg" alt="Fresh seafood plate served aboard HX" />
               <div className="tsa_media_caption">Fresh, regionally inspired seafood is a signature of HX menus</div>
             </div>
             <div className="tsa_media_card">
-              <img src="/assets/HX_Dining_Guide_3.jpg" loading="lazy" alt="Chef preparing a specialty tasting menu dish" />
+              <img src="/assets/HX_Dining_Guide_3.jpg" alt="Chef preparing a specialty tasting menu dish" />
               <div className="tsa_media_caption">Specialty dining offers chef-inspired tasting menus on select ships</div>
             </div>
             <div className="tsa_media_card">
-              <img src="/assets/HX_Dining_Guide_4.jpg" loading="lazy" alt="Guests enjoying a casual meal with ocean views" />
+              <img src="/assets/HX_Dining_Guide_4.jpg" alt="Guests enjoying a casual meal with ocean views" />
               <div className="tsa_media_caption">Casual dining venues offer light meals with scenic ocean views</div>
             </div>
             <div className="tsa_media_card">
-              <img src="/assets/HX_Dining_Guide_5.jpg" loading="lazy" alt="Coffee and pastries served during breakfast" />
+              <img src="/assets/HX_Dining_Guide_5.jpg" alt="Coffee and pastries served during breakfast" />
               <div className="tsa_media_caption">Complimentary coffee and tea are available throughout the day</div>
             </div>
           </div>
