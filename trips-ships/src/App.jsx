@@ -9,8 +9,12 @@ import ZodiacLandingsExplained from "./component/zodiac-landings"
 import AntarcticaCruiseFAQ from "./component/antarctica-cruise-faq"
 import AntarcticaPhotographyGuide from "./component/antarctica-photography-guide"
 import AntarcticaFirstTimeTravelers from "./component/first-time-antarctica-cruise"
-import HXCabinsGuide from "./component/hx-cabins"
 import HXShipsGuide from "./component/hx-expeditions-ships"
+import HXCabinsGuide from "./component/hx-cabins"
+import HXDiningGuide from "./component/hx-dining"
+import HXExpeditionTeam from "./component/hx-expedition-team"
+import HXScienceCenter from "./component/hx-science-center"
+import HXWhatsIncluded from "./component/hx-whats-included"
 
 function App() {
   return (
@@ -92,6 +96,30 @@ function App() {
         <Route
           path="/hx-cabins"
           element={<HXCabinsGuide />}
+        />
+
+        {/* Page 13 */}
+        <Route
+          path="/hx-dining"
+          element={<HXDiningGuide />}
+        />
+
+        {/* Page 14 */}
+        <Route
+          path="/hx-expedition-team"
+          element={<HXExpeditionTeam />}
+        />
+
+        {/* Page 15 */}
+        <Route
+          path="/hx-science-center"
+          element={<HXScienceCenter />}
+        />
+
+        {/* Page 16 */}
+        <Route
+          path="/hx-whats-included"
+          element={<HXWhatsIncluded />}
         />
 
       </Routes>
