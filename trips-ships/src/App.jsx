@@ -15,6 +15,10 @@ import HXDiningGuide from "./component/hx-dining"
 import HXExpeditionTeam from "./component/hx-expedition-team"
 import HXScienceCenter from "./component/hx-science-center"
 import HXWhatsIncluded from "./component/hx-whats-included"
+import HXReviews from "./component/hx-reviews"
+import HXSustainability from "./component/hx-sustainability"
+import BestTimeToVisitSvalbard from "./component/best-time-to-visit-svalbard"
+import PolarBearsSvalbard from "./component/polar-bears-svalbard"
 
 function App() {
   return (
@@ -120,6 +124,30 @@ function App() {
         <Route
           path="/hx-whats-included"
           element={<HXWhatsIncluded />}
+        />
+
+        {/* Page 17 */}
+        <Route
+          path="/hx-reviews"
+          element={<HXReviews />}
+        />
+
+        {/* Page 18 */}
+        <Route
+          path="/hx-sustainability"
+          element={<HXSustainability />}
+        />
+
+        {/* Page 19 */}
+        <Route
+          path="/best-time-to-visit-svalbard"
+          element={<BestTimeToVisitSvalbard />}
+        />
+        
+        {/* Page 20 */}
+        <Route
+          path="/polar-bears-svalbard"
+          element={<PolarBearsSvalbard />}
         />
 
       </Routes>
