@@ -19,6 +19,10 @@ import HXReviews from "./component/hx-reviews"
 import HXSustainability from "./component/hx-sustainability"
 import BestTimeToVisitSvalbard from "./component/best-time-to-visit-svalbard"
 import PolarBearsSvalbard from "./component/polar-bears-svalbard"
+import SvalbardWildlifeGuide from "./component/svalbard-wildlife"
+import SvalbardPackingGuide from "./component/svalbard-packing-guide"
+import SvalbardCruiseFaq from "./component/svalbard-cruise-faq"
+import Test from "./component/test"
 
 function App() {
   return (
@@ -28,6 +32,11 @@ function App() {
         <Route
           path="/"
           element={<BestTimeToVisitAntarctica />}
+        />
+
+        <Route
+          path="/test"
+          element={<Test />}
         />
 
         {/* Page 1 */}
@@ -148,6 +157,24 @@ function App() {
         <Route
           path="/polar-bears-svalbard"
           element={<PolarBearsSvalbard />}
+        />
+
+        {/* Page 21 */}
+        <Route
+          path="/svalbard-wildlife"
+          element={<SvalbardWildlifeGuide />}
+        />
+
+        {/* Page 22 */}
+        <Route
+          path="/svalbard-packing-guide"
+          element={<SvalbardPackingGuide />}
+        />
+
+        {/* Page 23 */}
+        <Route
+          path="/svalbard-cruise-faq"
+          element={<SvalbardCruiseFaq />}
         />
 
       </Routes>

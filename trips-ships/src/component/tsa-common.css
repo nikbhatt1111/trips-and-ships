@@ -1,0 +1,745 @@
+/* =================================================================
+   TRIPS & SHIPS — COMMON DESIGN SYSTEM
+   Shared by every page variant. Light theme is default; add
+   data-theme="dark" to the root .tsa_page element to flip it.
+================================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+:root {
+    --tsa-navy: #274472;
+    --tsa-navy-light: #274472cc;
+    --tsa-bg-white: #fff;
+    --tsa-bg-soft: #e7f3f5;
+    --tsa-bg-light: #f8fafc;
+    --tsa-bg-dark: #0f1c2e;
+    --tsa-bg-dark2: #1c2f4a;
+    --tsa-green: #10b981;
+    --tsa-red: #ef4444;
+    --tsa-ice: #7fd4d9;
+    --tsa-gold: #c9a35c;
+    --tsa-text-body: #2d3a4a;
+    --tsa-text-muted: #5a6a7a;
+    --tsa-navy-soft: #27447212;
+    --tsa-navy-border: #2744721a;
+    --tsa-card-bg: #ffffff;
+    --tsa-radius: 12px;
+    --tsa-radius-lg: 20px;
+    --tsa-radius-sm: 8px;
+    --tsa-shadow: 0 4px 24px #27447214;
+    --tsa-shadow-lg: 0 12px 40px #27447226;
+    --tsa-transition: .3s cubic-bezier(.4, 0, .2, 1);
+    --tsa-font-display: "Playfair Display", Georgia, serif;
+    --tsa-font-body: "Montserrat", -apple-system, sans-serif;
+    --tsa-font-mono: "JetBrains Mono", "Courier New", monospace;
+    --tsa-overlay-scrim: linear-gradient(180deg, #0f1c2e00 0%, #0f1c2ecc 100%);
+    --tsa-container: 1200px;
+}
+
+.tsa_page[data-theme="dark"] {
+    --tsa-bg-white: #101b2c;
+    --tsa-bg-soft: #16243a;
+    --tsa-bg-light: #0f1c2e;
+    --tsa-bg-dark: #070d17;
+    --tsa-bg-dark2: #0f1c2e;
+    --tsa-text-body: #d6dfeb;
+    --tsa-text-muted: #8a9bb5;
+    --tsa-navy: #8fb4e8;
+    --tsa-navy-light: #8fb4e8cc;
+    --tsa-navy-soft: #8fb4e81a;
+    --tsa-navy-border: #8fb4e826;
+    --tsa-card-bg: #16243a;
+    --tsa-shadow: 0 4px 24px #00000040;
+    --tsa-shadow-lg: 0 12px 40px #00000055;
+    --tsa-ice: #4fb8c2;
+    --tsa-gold: #d9bb7a;
+}
+
+.tsa_page {
+    font-family: var(--tsa-font-body);
+    color: var(--tsa-text-body);
+    background: var(--tsa-bg-white);
+    line-height: 1.6;
+    width: 100%;
+    overflow-x: hidden;
+    transition: background .4s ease, color .4s ease;
+}
+
+.tsa_page img {
+    display: block;
+    max-width: 100%;
+}
+
+.tsa_page a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.tsa_page ul {
+    list-style: none;
+}
+
+.tsa_page button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+/* ---------------- layout ---------------- */
+.tsa-container {
+    max-width: var(--tsa-container);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.tsa-section {
+    padding: 88px 0;
+}
+
+.tsa-section--tight {
+    padding: 56px 0;
+}
+
+.tsa-section--soft {
+    background: var(--tsa-bg-soft);
+}
+
+.tsa-section--light {
+    background: var(--tsa-bg-light);
+}
+
+.tsa-section--dark {
+    background: var(--tsa-bg-dark);
+    color: #eef3fa;
+}
+
+.tsa-section--dark .tsa-eyebrow,
+.tsa-section--dark .tsa-h2,
+.tsa-section--dark .tsa-h3 {
+    color: #fff;
+}
+
+.tsa-section--dark .tsa-muted {
+    color: #a9b8ce;
+}
+
+.tsa-grid {
+    display: grid;
+    gap: 28px;
+}
+
+.tsa-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.tsa-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.tsa-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 980px) {
+    .tsa-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tsa-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+
+    .tsa-grid-2,
+    .tsa-grid-3,
+    .tsa-grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------------- type ---------------- */
+.tsa-eyebrow {
+    font-family: var(--tsa-font-mono);
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--tsa-gold);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tsa-eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: var(--tsa-gold);
+    display: inline-block;
+}
+
+.tsa-h1 {
+    font-family: var(--tsa-font-display);
+    font-weight: 700;
+    font-size: clamp(38px, 5.4vw, 66px);
+    line-height: 1.05;
+    color: var(--tsa-navy);
+    letter-spacing: -.01em;
+}
+
+.tsa-h2 {
+    font-family: var(--tsa-font-display);
+    font-weight: 700;
+    font-size: clamp(28px, 3.6vw, 42px);
+    line-height: 1.12;
+    color: var(--tsa-navy);
+}
+
+.tsa-h3 {
+    font-family: var(--tsa-font-display);
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--tsa-navy);
+}
+
+.tsa-lede {
+    font-size: 19px;
+    color: var(--tsa-text-muted);
+    max-width: 640px;
+    line-height: 1.7;
+}
+
+.tsa-muted {
+    color: var(--tsa-text-muted);
+}
+
+.tsa-center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ---------------- buttons ---------------- */
+.tsa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: .02em;
+    transition: transform var(--tsa-transition), box-shadow var(--tsa-transition), background var(--tsa-transition), color var(--tsa-transition);
+    white-space: nowrap;
+}
+
+.tsa-btn--primary {
+    background: var(--tsa-navy);
+    color: #fff;
+    box-shadow: var(--tsa-shadow);
+}
+
+.tsa-btn--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--tsa-shadow-lg);
+}
+
+.tsa-btn--gold {
+    background: var(--tsa-gold);
+    color: #1c2f4a;
+}
+
+.tsa-btn--gold:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--tsa-shadow-lg);
+}
+
+.tsa-btn--outline {
+    background: transparent;
+    color: #fff;
+    border: 1.5px solid #ffffff66;
+}
+
+.tsa-btn--outline:hover {
+    background: #ffffff1a;
+    border-color: #fff;
+}
+
+.tsa-btn--ghost {
+    background: var(--tsa-navy-soft);
+    color: var(--tsa-navy);
+}
+
+.tsa-btn--ghost:hover {
+    background: var(--tsa-navy-border);
+}
+
+.tsa-btn--sm {
+    padding: 10px 18px;
+    font-size: 13px;
+}
+
+/* ---------------- cards ---------------- */
+.tsa-card {
+    background: var(--tsa-card-bg);
+    border-radius: var(--tsa-radius);
+    border: 1px solid var(--tsa-navy-border);
+    box-shadow: var(--tsa-shadow);
+    transition: transform var(--tsa-transition), box-shadow var(--tsa-transition);
+}
+
+.tsa-card--hover:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--tsa-shadow-lg);
+}
+
+.tsa-card-pad {
+    padding: 28px;
+}
+
+.tsa-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--tsa-navy-soft);
+    color: var(--tsa-navy);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+/* ---------------- images / media ---------------- */
+.tsa-img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tsa-media {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--tsa-radius-lg);
+    background: var(--tsa-bg-soft);
+}
+
+.tsa-media img {
+    transition: transform .6s ease;
+}
+
+.tsa-media:hover img {
+    transform: scale(1.06);
+}
+
+.tsa-ratio-16-9 {
+    aspect-ratio: 16/9;
+}
+
+.tsa-ratio-4-3 {
+    aspect-ratio: 4/3;
+}
+
+.tsa-ratio-1-1 {
+    aspect-ratio: 1/1;
+}
+
+.tsa-ratio-3-4 {
+    aspect-ratio: 3/4;
+}
+
+.tsa-ratio-21-9 {
+    aspect-ratio: 21/9;
+}
+
+.tsa-caption-overlay {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 20px;
+    background: var(--tsa-overlay-scrim);
+    color: #fff;
+}
+
+/* image gallery grid */
+.tsa-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.tsa-gallery>*:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+@media (max-width: 780px) {
+    .tsa-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tsa-gallery>*:nth-child(1) {
+        grid-column: span 2;
+    }
+}
+
+/* ---------------- video block ---------------- */
+.tsa-video {
+    position: relative;
+    border-radius: var(--tsa-radius-lg);
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    background: #000;
+    box-shadow: var(--tsa-shadow-lg);
+}
+
+.tsa-video img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .78;
+}
+
+.tsa-video-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+.tsa-video-play-btn {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: #ffffffe6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--tsa-navy);
+    transition: transform var(--tsa-transition);
+    box-shadow: 0 8px 30px #00000055;
+}
+
+.tsa-video:hover .tsa-video-play-btn {
+    transform: scale(1.1);
+}
+
+.tsa-video-label {
+    position: absolute;
+    left: 20px;
+    bottom: 18px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    text-shadow: 0 2px 10px #00000080;
+}
+
+.tsa-video-tag {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    background: #ef4444;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    padding: 5px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+}
+
+/* ---------------- timeline (used only where order = real sequence) ---------------- */
+.tsa-timeline {
+    position: relative;
+    padding-left: 40px;
+}
+
+.tsa-timeline::before {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: var(--tsa-navy-border);
+}
+
+.tsa-timeline-item {
+    position: relative;
+    padding-bottom: 44px;
+}
+
+.tsa-timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.tsa-timeline-dot {
+    position: absolute;
+    left: -40px;
+    top: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--tsa-bg-white);
+    border: 3px solid var(--tsa-navy);
+}
+
+/* ---------------- tabs ---------------- */
+.tsa-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tsa-tab {
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--tsa-text-muted);
+    background: var(--tsa-bg-light);
+    border: 1px solid var(--tsa-navy-border);
+    transition: all var(--tsa-transition);
+}
+
+.tsa-tab.is-active {
+    background: var(--tsa-navy);
+    color: #fff;
+    border-color: var(--tsa-navy);
+}
+
+/* ---------------- table ---------------- */
+.tsa-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14.5px;
+}
+
+.tsa-table th {
+    text-align: left;
+    background: var(--tsa-navy);
+    color: #fff;
+    padding: 14px 18px;
+    font-weight: 600;
+}
+
+.tsa-table th:first-child {
+    border-radius: 10px 0 0 0;
+}
+
+.tsa-table th:last-child {
+    border-radius: 0 10px 0 0;
+}
+
+.tsa-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--tsa-navy-border);
+}
+
+.tsa-table tr:nth-child(even) td {
+    background: var(--tsa-navy-soft);
+}
+
+/* ---------------- accordion / FAQ ---------------- */
+.tsa-faq-item {
+    border-bottom: 1px solid var(--tsa-navy-border);
+}
+
+.tsa-faq-q {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 4px;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: left;
+    color: var(--tsa-text-body);
+}
+
+.tsa-faq-icon {
+    transition: transform var(--tsa-transition);
+    flex-shrink: 0;
+    color: var(--tsa-navy);
+}
+
+.tsa-faq-item.is-open .tsa-faq-icon {
+    transform: rotate(45deg);
+}
+
+.tsa-faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .35s ease;
+    color: var(--tsa-text-muted);
+    font-size: 15px;
+}
+
+.tsa-faq-item.is-open .tsa-faq-a {
+    max-height: 400px;
+    padding-bottom: 20px;
+}
+
+/* ---------------- nav ---------------- */
+.tsa-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--tsa-bg-white);
+    border-bottom: 1px solid var(--tsa-navy-border);
+    backdrop-filter: blur(10px);
+}
+
+.tsa-nav-inner {
+    max-width: var(--tsa-container);
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tsa-logo {
+    font-family: var(--tsa-font-display);
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: .04em;
+    color: var(--tsa-navy);
+}
+
+.tsa-theme-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--tsa-navy-soft);
+    color: var(--tsa-navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--tsa-transition);
+}
+
+.tsa-theme-toggle:hover {
+    background: var(--tsa-navy-border);
+}
+
+/* ---------------- stat / metric ---------------- */
+.tsa-stat {
+    text-align: center;
+}
+
+.tsa-stat-num {
+    font-family: var(--tsa-font-display);
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--tsa-navy);
+}
+
+.tsa-stat-label {
+    font-size: 13px;
+    color: var(--tsa-text-muted);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-top: 4px;
+}
+
+/* ---------------- footer CTA ---------------- */
+.tsa-cta-banner {
+    background: linear-gradient(135deg, var(--tsa-navy) 0%, #16243f 100%);
+    color: #fff;
+    border-radius: var(--tsa-radius-lg);
+    padding: 64px 48px;
+    text-align: center;
+}
+
+.tsa-cta-banner .tsa-h2 {
+    color: #fff;
+}
+
+/* ---------------- misc utility ---------------- */
+.tsa-flex {
+    display: flex;
+    align-items: center;
+}
+
+.tsa-gap-8 {
+    gap: 8px;
+}
+
+.tsa-gap-12 {
+    gap: 12px;
+}
+
+.tsa-gap-16 {
+    gap: 16px;
+}
+
+.tsa-gap-24 {
+    gap: 24px;
+}
+
+.tsa-mt-8 {
+    margin-top: 8px;
+}
+
+.tsa-mt-16 {
+    margin-top: 16px;
+}
+
+.tsa-mt-24 {
+    margin-top: 24px;
+}
+
+.tsa-mt-32 {
+    margin-top: 32px;
+}
+
+.tsa-mt-48 {
+    margin-top: 48px;
+}
+
+.tsa-mt-64 {
+    margin-top: 64px;
+}
+
+.tsa-icon-tile {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--tsa-navy-soft);
+    color: var(--tsa-navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+@media (max-width: 780px) {
+    .tsa-section {
+        padding: 56px 0;
+    }
+
+    .tsa-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
