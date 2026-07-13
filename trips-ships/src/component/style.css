@@ -3474,3 +3474,280 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* =====================================================
+   NEW — "AURORA" ABSTRACT GRAPHIC SYSTEM
+   For pages that want visual richness WITHOUT photography:
+   animated gradient-mesh panels, conic-gradient stat rings,
+   and an overlapping stacked-tile grid. New class family only.
+   ===================================================== */
+
+@keyframes tsa_aurora_drift {
+    0%   { transform: translate(0%, 0%) scale(1); }
+    33%  { transform: translate(6%, -8%) scale(1.08); }
+    66%  { transform: translate(-6%, 6%) scale(0.96); }
+    100% { transform: translate(0%, 0%) scale(1); }
+}
+
+@keyframes tsa_aurora_drift_alt {
+    0%   { transform: translate(0%, 0%) scale(1); }
+    50%  { transform: translate(-8%, 8%) scale(1.1); }
+    100% { transform: translate(0%, 0%) scale(1); }
+}
+
+@keyframes tsa_ring_grow {
+    from { --tsa-ring-pct: 0; }
+}
+
+/* --- AURORA PANEL: replaces a photo slot with an animated
+   gradient-mesh graphic. Use tsa_aurora_panel.dark for the
+   navy-background variant. --- */
+.tsa_aurora_panel {
+    position: relative;
+    border-radius: var(--tsa-radius-lg);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--tsa-bg-dark);
+    box-shadow: var(--tsa-shadow-lg);
+    isolation: isolate;
+}
+
+.tsa_aurora_panel::before,
+.tsa_aurora_panel::after {
+    content: "";
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: .55;
+    z-index: 0;
+}
+
+.tsa_aurora_panel::before {
+    top: -10%;
+    left: -10%;
+    background: radial-gradient(circle, var(--tsa-green), transparent 70%);
+    animation: tsa_aurora_drift 14s ease-in-out infinite;
+}
+
+.tsa_aurora_panel::after {
+    bottom: -15%;
+    right: -10%;
+    background: radial-gradient(circle, var(--tsa-navy-light), transparent 70%);
+    animation: tsa_aurora_drift_alt 18s ease-in-out infinite;
+}
+
+.tsa_aurora_grid {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-image:
+        linear-gradient(#ffffff14 1px, transparent 1px),
+        linear-gradient(90deg, #ffffff14 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
+}
+
+.tsa_aurora_content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 32px;
+}
+
+.tsa_aurora_icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #ffffff14;
+    border: 1px solid #ffffff2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--tsa-green);
+    margin-bottom: 18px;
+    backdrop-filter: blur(4px);
+    transition: var(--tsa-transition);
+}
+
+.tsa_aurora_panel:hover .tsa_aurora_icon {
+    transform: scale(1.1) rotate(8deg);
+    border-color: var(--tsa-green);
+}
+
+.tsa_aurora_content h4 {
+    color: #fff;
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.tsa_aurora_content p {
+    color: #b9c8db;
+    font-size: 13.5px;
+    max-width: 260px;
+}
+
+/* --- RING STAT: pure-CSS conic-gradient progress ring,
+   no SVG/image needed. Set --tsa-ring-pct (0-100) inline. --- */
+.tsa_ring_stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+}
+
+.tsa_ring_stat_circle {
+    --tsa-ring-pct: 70;
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: conic-gradient(var(--tsa-green) calc(var(--tsa-ring-pct) * 1%), var(--tsa-navy-soft) 0);
+    transition: background 1s ease;
+}
+
+.tsa_ring_stat:hover .tsa_ring_stat_circle {
+    filter: brightness(1.08);
+}
+
+.tsa_ring_stat_inner {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background: var(--tsa-card-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--tsa-font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--tsa-navy);
+}
+
+.tsa_ring_stat_label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--tsa-text-muted);
+    max-width: 150px;
+}
+
+.tsa_ring_stat_row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+@media (max-width: 860px) {
+    .tsa_ring_stat_row {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px 16px;
+    }
+}
+
+/* --- STACKED TILE GRID: overlapping, alternating-elevation
+   tiles (text + icon only) — the no-photo answer to a photo
+   collage. Distinct rhythm via nth-child offsets. --- */
+.tsa_stack_tiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.tsa_stack_tile {
+    position: relative;
+    background: var(--tsa-card-bg);
+    border: 1px solid var(--tsa-navy-border);
+    border-radius: var(--tsa-radius-lg);
+    padding: 28px 22px;
+    transition: var(--tsa-transition);
+    z-index: 1;
+}
+
+.tsa_stack_tile:nth-child(2n) {
+    transform: translateY(22px);
+}
+
+.tsa_stack_tile:hover {
+    transform: translateY(6px) scale(1.03);
+    box-shadow: var(--tsa-shadow-lg);
+    border-color: var(--tsa-green);
+    z-index: 2;
+}
+
+.tsa_stack_tile:nth-child(2n):hover {
+    transform: translateY(28px) scale(1.03);
+}
+
+.tsa_stack_tile_icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--tsa-navy);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    transition: var(--tsa-transition);
+}
+
+.tsa_stack_tile:hover .tsa_stack_tile_icon {
+    background: var(--tsa-green);
+    color: #06281f;
+    transform: rotate(-6deg) scale(1.06);
+}
+
+.tsa_stack_tile h4 {
+    font-size: 15.5px;
+    margin-bottom: 8px;
+}
+
+.tsa_stack_tile p {
+    font-size: 13px;
+    color: var(--tsa-text-muted);
+}
+
+@media (max-width: 900px) {
+    .tsa_stack_tiles {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .tsa_stack_tile:nth-child(2n) {
+        transform: none;
+    }
+
+    .tsa_stack_tile:nth-child(2n):hover {
+        transform: translateY(6px) scale(1.03);
+    }
+}
+
+@media (max-width: 560px) {
+    .tsa_stack_tiles {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- PANEL SPLIT: content + aurora panel side by side,
+   reuses tsa_aurora_panel as its media slot. --- */
+.tsa_panel_split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .tsa_panel_split {
+        grid-template-columns: 1fr;
+    }
+}
