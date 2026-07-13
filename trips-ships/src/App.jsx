@@ -23,6 +23,7 @@ import SvalbardWildlifeGuide from "./component/svalbard-wildlife"
 import SvalbardPackingGuide from "./component/svalbard-packing-guide"
 import SvalbardCruiseFaq from "./component/svalbard-cruise-faq"
 import Test from "./component/test"
+import BestTimeToVisitGreenland from "./component/best-time-to-visit-greenland"
 
 function App() {
   return (
@@ -175,6 +176,12 @@ function App() {
         <Route
           path="/svalbard-cruise-faq"
           element={<SvalbardCruiseFaq />}
+        />
+
+        {/* Page 24 */}
+        <Route
+          path="/best-time-to-visit-greenland"
+          element={<BestTimeToVisitGreenland />}
         />
 
       </Routes>
