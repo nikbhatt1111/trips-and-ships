@@ -2057,1092 +2057,1420 @@ body {
 }
 
 
-
-
-
-
-
 /* =====================================================
-   LARGE DESKTOP / 2K / 4K SCREENS
-   PART 1
-   Global + Navigation + Hero + Season Strip
-===================================================== */
+   NEW — REDESIGN ADDITIONS (used by the new "richer media"
+   page only). Everything below is additive: new class
+   names layered on the existing tsa_* tokens/system so the
+   original page and CSS above are completely untouched.
+   ===================================================== */
 
-@media (min-width: 1721px) {
-
-    html {
-        font-size: 0.833vw;
-    }
-
-    body {
-        line-height: 1.6;
-    }
-
-    .tsa_page {
-        line-height: 1.6;
-    }
-
-    .tsa_wrap {
-        max-width: 61.458vw;
-        padding: 0 1.667vw;
-    }
-
-    .tsa_section {
-        padding: 4.583vw 0;
-    }
-
-    .tsa_section_head {
-        max-width: 35.417vw;
-        margin: 0 auto 2.917vw;
-    }
-
-    .tsa_section_head h2 {
-        font-size: 1.979vw;
-        margin-bottom: 0.833vw;
-    }
-
-    .tsa_section_head p {
-        font-size: 0.885vw;
-    }
-
-    .tsa_eyebrow {
-        gap: 0.417vw;
-        font-size: 0.625vw;
-        letter-spacing: 0.078vw;
-        margin-bottom: 0.833vw;
-    }
-
-    /* ===========================
-       NAVIGATION
-    =========================== */
-
-    .tsa_nav {
-        max-width: 62.5vw;
-        padding: 1.042vw 1.667vw;
-    }
-
-    .tsa_logo {
-        font-size: 1.042vw;
-        letter-spacing: 0.104vw;
-    }
-
-    .tsa_nav_links {
-        gap: 1.667vw;
-    }
-
-    .tsa_nav_links li {
-        font-size: 0.677vw;
-        letter-spacing: 0.026vw;
-        padding-bottom: 0.208vw;
-    }
-
-    .tsa_nav_links li::after {
-        height: 0.104vw;
-    }
-
-    .tsa_nav_right {
-        gap: 0.729vw;
-    }
-
-    .tsa_nav_cta {
-        padding: 0.521vw 1.146vw;
-        border-radius: 0.313vw;
-        font-size: 0.625vw;
-        letter-spacing: 0.052vw;
-        border-width: 0.052vw;
-    }
-
-    /* ===========================
-       THEME TOGGLE
-    =========================== */
-
-    .tsa_theme_toggle {
-        width: 2.917vw;
-        height: 1.563vw;
-        border-radius: 52.083vw;
-        padding: 0.156vw;
-        border-width: 0.052vw;
-    }
-
-    .tsa_theme_toggle_knob {
-        width: 1.146vw;
-        height: 1.146vw;
-    }
-
-    .tsa_theme_toggle.dark .tsa_theme_toggle_knob {
-        transform: translateX(1.354vw);
-    }
-
-    .tsa_theme_toggle_float {
-        top: 1.042vw;
-        right: 1.458vw;
-        border-width: 0.052vw;
-    }
-
-    /* ===========================
-       HERO
-    =========================== */
-
-    .tsa_hero_inner {
-        padding: 5.208vw 1.667vw 7.292vw;
-        max-width: 60%;
-    }
-
-    .tsa_hero_eyebrow {
-        gap: 0.417vw;
-        font-size: 0.625vw;
-        letter-spacing: 0.104vw;
-        margin-bottom: 1.146vw;
-    }
-
-    .tsa_hero h1 {
-        font-size: 2.708vw;
-        margin-bottom: 1.042vw;
-        letter-spacing: -0.026vw;
-    }
-
-    .tsa_hero p {
-        font-size: 0.938vw;
-        max-width: 100%;
-        margin: 0 auto 2.083vw;
-    }
-
-    .tsa_hero_ctas {
-        gap: 0.833vw;
-    }
-
-    .tsa_btn_primary,
-    .tsa_btn_secondary {
-        padding: 0.781vw 1.563vw;
-        border-radius: 0.417vw;
-        font-size: 0.729vw;
-    }
-
-    .tsa_btn_primary {
-        gap: 0.417vw;
-    }
-
-    .tsa_btn_primary::before {
-        width: 40%;
-        left: -60%;
-    }
-
-    .tsa_btn_primary:hover svg {
-        transform: translateX(0.156vw);
-    }
-
-    .tsa_btn_secondary {
-        border-width: 0.052vw;
-    }
-
-    /* ===========================
-       HERO MEDIA
-    =========================== */
-
-    .tsa_hero_scrim {
-        inset: 0;
-    }
-
-    .tsa_hero_media video,
-    .tsa_hero_media img {
-        opacity: .5;
-    }
-
-    /* ===========================
-       SEASON STRIP
-    =========================== */
-
-    .tsa_season_strip {
-        max-width: 56.25vw;
-        margin: -3.646vw auto 0;
-        border-radius: 1.042vw;
-    }
-
-    .tsa_season_strip_item {
-        padding: 1.354vw 0.938vw;
-        border-right-width: 0.052vw;
-    }
-
-    .tsa_ss_month {
-        font-size: 0.885vw;
-        margin-bottom: 0.313vw;
-    }
-
-    .tsa_ss_best {
-        font-size: 0.651vw;
-    }
-
+/* --- HERO, video variant: same slot as .tsa_hero_media,
+   swaps to autoplaying <video> with a slightly stronger scrim
+   so headline copy stays readable over motion footage. --- */
+.tsa_hero_media_video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: .55;
 }
 
-/* =====================================================
-   LARGE DESKTOP / 2K / 4K SCREENS
-   PART 2
-   Why Visit + Media Grid + Video + Month Explorer
-===================================================== */
-
-@media (min-width:1721px) {
-
-    /* =====================================================
-       WHY VISIT
-    ===================================================== */
-
-    .tsa_why_grid {
-        gap: 3.333vw;
-    }
-
-    .tsa_why_text h2 {
-        font-size: 1.771vw;
-        margin-bottom: 1.042vw;
-    }
-
-    .tsa_why_text p {
-        font-size: 0.833vw;
-        margin-bottom: 0.833vw;
-    }
-
-    .tsa_chip_grid {
-        gap: 0.521vw;
-        margin-top: 1.458vw;
-    }
-
-    .tsa_chip {
-        gap: 0.521vw;
-        font-size: 0.729vw;
-        padding: 0.625vw 0.729vw;
-        border-radius: 0.417vw;
-    }
-
-    .tsa_chip:hover {
-        border-width: 0.052vw;
-    }
-
-    .tsa_why_card {
-        padding: 1.875vw;
-        border-radius: 1.042vw;
-    }
-
-    .tsa_why_card_stat {
-        gap: 1.042vw;
-        margin-bottom: 1.146vw;
-        padding: 0.417vw;
-        border-radius: 0.521vw;
-    }
-
-    .tsa_why_card_stat:hover {
-        transform: translateX(0.208vw);
-    }
-
-    .tsa_why_card_num {
-        font-size: 1.563vw;
-    }
-
-    .tsa_why_card_label {
-        font-size: 0.677vw;
-    }
-
-    /* =====================================================
-       MEDIA GRID
-    ===================================================== */
-
-    .tsa_media_grid {
-        gap: 0.833vw;
-        height: 23.958vw;
-    }
-
-    .tsa_media_card {
-        border-radius: 1.042vw;
-    }
-
-    .tsa_media_card:hover img {
-        transform: scale(1.06);
-    }
-
-    .tsa_media_caption {
-        padding: 0.938vw 1.042vw;
-        font-size: 0.703vw;
-    }
-
-    /* =====================================================
-       VIDEO
-    ===================================================== */
-
-    .tsa_video_card {
-        border-radius: 1.042vw;
-    }
-
-    .tsa_video_play_btn {
-        width: 4.063vw;
-        height: 4.063vw;
-    }
-
-    .tsa_video_play_btn:hover {
-        transform: translate(-50%, -50%) scale(1.08);
-    }
-
-    .tsa_video_caption_bar {
-        padding: 1.042vw 1.354vw;
-        gap: 0.833vw;
-    }
-
-    .tsa_video_caption_bar h4 {
-        font-size: 0.885vw;
-        margin-bottom: 0.208vw;
-    }
-
-    .tsa_video_caption_bar p {
-        font-size: 0.677vw;
-    }
-
-    /* =====================================================
-       MONTH EXPLORER
-    ===================================================== */
-
-    .tsa_month_explorer_shell {
-        border-radius: 1.042vw;
-        border-width: 0.052vw;
-    }
-
-    .tsa_month_tab {
-        min-width: 5.729vw;
-        padding: 1.042vw 0.625vw;
-        gap: 0.417vw;
-        border-bottom-width: 0.156vw;
-    }
-
-    .tsa_month_tab_label {
-        font-size: 0.677vw;
-    }
-
-    .tsa_month_body {
-        padding: 2.292vw;
-        gap: 2.500vw;
-    }
-
-    .tsa_month_tagline {
-        font-size: 0.677vw;
-        letter-spacing: 0.052vw;
-        margin-bottom: 0.521vw;
-    }
-
-    .tsa_month_title {
-        font-size: 1.563vw;
-        margin-bottom: 0.938vw;
-    }
-
-    .tsa_month_highlights {
-        gap: 0.521vw;
-        margin-bottom: 1.146vw;
-    }
-
-    .tsa_month_highlights li {
-        gap: 0.521vw;
-        font-size: 0.755vw;
-    }
-
-    .tsa_month_highlights svg {
-        margin-top: 0.104vw;
-    }
-
-    .tsa_month_bestfor {
-        gap: 0.417vw;
-        margin-bottom: 0.938vw;
-    }
-
-    .tsa_month_bestfor span {
-        font-size: 0.651vw;
-        padding: 0.365vw 0.625vw;
-        border-radius: 1.042vw;
-    }
-
-    .tsa_month_note {
-        font-size: 0.703vw;
-        border-left-width: 0.156vw;
-        padding-left: 0.729vw;
-    }
-
-    .tsa_month_stats {
-        gap: 0.729vw;
-    }
-
-    .tsa_stat_card {
-        padding: 0.938vw;
-        border-radius: 0.625vw;
-    }
-
-    .tsa_stat_card:hover {
-        transform: translateY(-0.208vw);
-    }
-
-    .tsa_stat_card svg {
-        margin-bottom: 0.417vw;
-    }
-
-    .tsa_stat_card:hover svg {
-        transform: scale(1.15);
-    }
-
-    .tsa_stat_card_value {
-        font-size: 0.990vw;
-    }
-
-    .tsa_stat_card_label {
-        font-size: 0.599vw;
-        margin-top: 0.208vw;
-    }
-
-    .tsa_bar_chart {
-        margin-top: 0.417vw;
-        gap: 0.938vw;
-        height: 7.292vw;
-        padding: 0 0.417vw;
-        border-bottom-width: 0.052vw;
-    }
-
-    .tsa_bar {
-        max-width: 1.771vw;
-        border-radius: 0.313vw 0.313vw 0 0;
-    }
-
-    .tsa_bar_col {
-        gap: 0.417vw;
-    }
-
-    .tsa_bar_col:hover .tsa_bar {
-        transform: scaleX(1.15);
-    }
-
-    .tsa_bar_label {
-        font-size: 0.599vw;
-    }
-
-
-/* =====================================================
-   LARGE DESKTOP / 2K / 4K SCREENS
-   PART 3
-   Quote + Icon Grid + Tables + Choose Cards
-===================================================== */
-
-    /* =====================================================
-       QUOTE / EXPERT
-    ===================================================== */
-
-    .tsa_quote_card {
-        max-width: 45.833vw;
-    }
-
-    .tsa_quote_mark {
-        margin-bottom: 1.042vw;
-    }
-
-    .tsa_quote_text {
-        font-size: 1.250vw;
-        line-height: 1.55;
-        margin-bottom: 1.563vw;
-    }
-
-    .tsa_quote_author {
-        font-size: 0.781vw;
-    }
-
-    .tsa_quote_role {
-        font-size: 0.677vw;
-        margin-top: 0.208vw;
-    }
-
-    .tsa_quote_badges {
-        gap: 0.521vw;
-        margin-top: 1.354vw;
-    }
-
-    .tsa_quote_badges span {
-        font-size: 0.599vw;
-        padding: 0.313vw 0.625vw;
-        border-radius: 1.042vw;
-        border-width: 0.052vw;
-    }
-
-    .tsa_quote_badges span:hover {
-        transform: translateY(-0.104vw);
-    }
-
-    /* =====================================================
-       ICON GRID
-    ===================================================== */
-
-    .tsa_icon_grid {
-        gap: 1.146vw;
-    }
-
-    .tsa_icon_card {
-        padding: 1.354vw 1.042vw;
-        border-radius: 0.625vw;
-        border-width: 0.052vw;
-    }
-
-    .tsa_icon_card:hover {
-        transform: translateY(-0.156vw);
-    }
-
-    .tsa_icon_circle {
-        width: 2.396vw;
-        height: 2.396vw;
-        margin: 0 auto 0.729vw;
-    }
-
-    .tsa_icon_card h4 {
-        font-size: 0.781vw;
-        margin-bottom: 0.313vw;
-    }
-
-    .tsa_icon_card p {
-        font-size: 0.677vw;
-    }
-
-    /* =====================================================
-       TABLES
-    ===================================================== */
-
-    .tsa_table_wrap {
-        border-radius: 1.042vw;
-    }
-
-    .tsa_table {
-        min-width: 29.167vw;
-    }
-
-    .tsa_table th {
-        padding: 0.833vw 1.042vw;
-        font-size: 0.677vw;
-    }
-
-    .tsa_table td {
-        padding: 0.781vw 1.042vw;
-        font-size: 0.729vw;
-        border-bottom-width: 0.052vw;
-    }
-
-    .tsa_tables_grid {
-        gap: 1.667vw;
-    }
-
-    /* Scrollbars */
-
-    .tsa_table_wrap::-webkit-scrollbar,
-    .tsa_page ::-webkit-scrollbar {
-        width: 0.417vw;
-        height: 0.417vw;
-    }
-
-    .tsa_table_wrap::-webkit-scrollbar-track,
-    .tsa_page ::-webkit-scrollbar-track {
-        border-radius: 0.417vw;
-    }
-
-    .tsa_table_wrap::-webkit-scrollbar-thumb,
-    .tsa_page ::-webkit-scrollbar-thumb {
-        border-radius: 0.417vw;
-        border-width: 0.104vw;
-    }
-
-    /* =====================================================
-       CHOOSE MONTH CARDS
-    ===================================================== */
-
-    .tsa_choose_grid {
-        gap: 0.938vw;
-    }
-
-    .tsa_choose_card {
-        padding: 1.146vw 0.938vw;
-        border-radius: 0.625vw;
-        border-width: 0.052vw;
-    }
-
-    .tsa_choose_card:hover {
-        transform: translateY(-0.260vw);
-    }
-
-    .tsa_choose_card h4 {
-        font-size: 0.781vw;
-        margin-bottom: 0.625vw;
-    }
-
-    .tsa_choose_card li {
-        gap: 0.417vw;
-        padding: 0.260vw 0;
-        font-size: 0.677vw;
-    }
-
-    .tsa_choose_card li svg {
-        margin-top: 0.156vw;
-    }
+.tsa_hero_media_video::after {
+    content: "";
+}
+
+/* --- STAT BAND: full-bleed image with a dark scrim and a
+   row of large stats, echoes .tsa_why_card's numerals but
+   as a horizontal band rather than a dark panel. --- */
+.tsa_stat_band {
+    position: relative;
+    isolation: isolate;
+    border-radius: var(--tsa-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--tsa-shadow-lg);
+}
+
+.tsa_stat_band img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.tsa_stat_band::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #0f1c2ecc 0%, #0f1c2ee6 100%);
+    z-index: -1;
+}
+
+.tsa_stat_band_grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 56px 40px;
+}
+
+.tsa_stat_band_item {
+    text-align: center;
+    padding: 0 12px;
+    border-right: 1px solid #ffffff22;
+    transition: var(--tsa-transition);
+}
+
+.tsa_stat_band_item:last-child {
+    border-right: none;
+}
+
+.tsa_stat_band_item:hover {
+    transform: translateY(-4px);
+}
+
+.tsa_stat_band_num {
+    font-family: var(--tsa-font-display);
+    font-size: 40px;
+    color: var(--tsa-green);
+    margin-bottom: 8px;
+}
+
+.tsa_stat_band_label {
+    font-size: 12.5px;
+    letter-spacing: .4px;
+    color: #cdd8e6;
+}
+
+@media (max-width: 860px) {
+    .tsa_stat_band_grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px 0;
+        padding: 40px 24px;
+    }
+
+    .tsa_stat_band_item {
+        border-right: none;
+        border-bottom: 1px solid #ffffff22;
+        padding-bottom: 20px;
+    }
+}
+
+/* --- EXPEDITION TEAM: circular portrait ring (reuses the
+   quote-portrait ring styling) inside a card with a pill role tag. --- */
+.tsa_team_grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 26px;
+}
+
+.tsa_team_card {
+    text-align: center;
+    background: var(--tsa-card-bg);
+    border: 1px solid var(--tsa-navy-border);
+    border-radius: var(--tsa-radius-lg);
+    padding: 30px 20px;
+    transition: var(--tsa-transition);
+}
+
+.tsa_team_card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--tsa-shadow-lg);
+    border-color: var(--tsa-green);
+}
+
+.tsa_team_photo_ring {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    padding: 4px;
+    margin: 0 auto 18px;
+    background: linear-gradient(135deg, var(--tsa-green), var(--tsa-navy-soft));
+}
+
+.tsa_team_photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 3px solid var(--tsa-card-bg);
+}
+
+.tsa_team_card h4 {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.tsa_team_role {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--tsa-navy);
+    background: var(--tsa-navy-soft);
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+}
+
+.tsa_team_card p {
+    font-size: 13px;
+    color: var(--tsa-text-muted);
+}
+
+@media (max-width: 900px) {
+    .tsa_team_grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+    .tsa_team_grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- EXPEDITION LOG CARDS: boarding-pass styled itinerary
+   cards — a photo header, a dashed perforation, then details.
+   This is the page's signature motif: departures read like
+   stamped log entries rather than generic pricing cards. --- */
+.tsa_log_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+}
+
+.tsa_log_card {
+    background: var(--tsa-card-bg);
+    border-radius: var(--tsa-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--tsa-shadow);
+    transition: var(--tsa-transition);
+    border: 1px solid var(--tsa-navy-border);
+}
+
+.tsa_log_card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--tsa-shadow-lg);
+}
+
+.tsa_log_media {
+    position: relative;
+    height: 190px;
+}
+
+.tsa_log_media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.tsa_log_stamp {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: var(--tsa-green);
+    color: #06281f;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .3px;
+    padding: 6px 12px;
+    border-radius: 999px;
+}
+
+.tsa_log_perforation {
+    position: relative;
+    height: 0;
+    border-top: 2px dashed var(--tsa-navy-border);
+    margin: 0 20px;
+}
+
+.tsa_log_perforation::before,
+.tsa_log_perforation::after {
+    content: "";
+    position: absolute;
+    top: -9px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--tsa-bg-light);
+}
+
+.tsa_log_perforation::before {
+    left: -29px;
+}
+
+.tsa_log_perforation::after {
+    right: -29px;
+}
+
+.tsa_log_body {
+    padding: 20px 22px 24px;
+}
+
+.tsa_log_route {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    color: var(--tsa-green);
+    margin-bottom: 8px;
+}
+
+.tsa_log_body h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.tsa_log_meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.tsa_log_meta span {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--tsa-navy);
+    background: var(--tsa-navy-soft);
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+@media (max-width: 960px) {
+    .tsa_log_grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 620px) {
+    .tsa_log_grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- MOMENTS MASONRY: uneven-height gallery for a closing
+   "In the Moment" strip, distinct from the filmstrip (vertical
+   stagger via CSS columns instead of horizontal scroll). --- */
+.tsa_moments_grid {
+    columns: 4 220px;
+    column-gap: 18px;
+}
+
+.tsa_moment_frame {
+    position: relative;
+    break-inside: avoid;
+    margin-bottom: 18px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--tsa-shadow);
+}
+
+.tsa_moment_frame img {
+    width: 100%;
+    display: block;
+    transition: transform .5s ease;
+}
+
+.tsa_moment_frame:hover img {
+    transform: scale(1.06);
+}
+
+/* --- SCROLL REVEAL, staggered variant: same fade/rise as
+   .tsa_reveal but designed to be applied to individual grid
+   children with incremental transition-delay via inline style. --- */
+.tsa_reveal_stagger {
+    opacity: 0;
+    transform: translateY(24px) scale(.98);
+    transition: opacity .6s ease, transform .6s ease;
+}
+
+.tsa_reveal_stagger.tsa_in_view {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tsa_reveal_stagger {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
 
 
 /* =====================================================
-   LARGE DESKTOP / 2K / 4K SCREENS
-   PART 4
-   Mistakes + Fit Cards + Timeline + Compare +
-   Word Strip + FAQ + Final CTA + Footer + Reveal
-===================================================== */
+   NEW — SEO / CRAWLABILITY UI ADDITIONS
+   Visible breadcrumb, jump-link table of contents, and an
+   internal-linking "Read Next" grid. Purely additive.
+   ===================================================== */
 
-    /* =====================================================
-       MISTAKES LIST
-    ===================================================== */
+/* --- BREADCRUMB --- */
+.tsa_breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--tsa-text-muted);
+    padding: 18px 0 0;
+}
 
-    .tsa_mistakes_list {
-        max-width: 40.625vw;
-        gap: 0.729vw;
+.tsa_breadcrumb a {
+    color: var(--tsa-text-muted);
+    transition: color .2s ease;
+}
+
+.tsa_breadcrumb a:hover {
+    color: var(--tsa-navy);
+    text-decoration: underline;
+}
+
+.tsa_breadcrumb_current {
+    color: var(--tsa-navy);
+}
+
+.tsa_breadcrumb_sep {
+    color: var(--tsa-navy-border);
+}
+
+/* --- TABLE OF CONTENTS --- */
+.tsa_toc {
+    background: var(--tsa-card-bg);
+    border: 1px solid var(--tsa-navy-border);
+    border-radius: var(--tsa-radius-lg);
+    padding: 26px 30px;
+    box-shadow: var(--tsa-shadow);
+}
+
+.tsa_toc_title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--tsa-green);
+    margin-bottom: 14px;
+}
+
+.tsa_toc_list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 24px;
+}
+
+.tsa_toc_list a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--tsa-text-body);
+    padding: 6px 0;
+    border-bottom: 1px solid transparent;
+    transition: var(--tsa-transition);
+}
+
+.tsa_toc_list a:hover {
+    color: var(--tsa-navy);
+    border-bottom-color: var(--tsa-green);
+}
+
+.tsa_toc_num {
+    font-family: var(--tsa-font-display);
+    font-size: 12px;
+    color: var(--tsa-green);
+    min-width: 18px;
+}
+
+@media (max-width: 760px) {
+    .tsa_toc_list {
+        grid-template-columns: 1fr 1fr;
     }
+}
 
-    .tsa_mistake_item {
-        gap: 0.833vw;
-        padding: 1.042vw 1.146vw;
-        border-radius: 0.625vw;
-        border-width: 0.052vw;
+@media (max-width: 480px) {
+    .tsa_toc_list {
+        grid-template-columns: 1fr;
     }
+}
 
-    .tsa_mistake_item:hover {
-        transform: translateX(0.313vw);
+/* --- READ NEXT / INTERNAL LINKING GRID --- */
+.tsa_related_grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.tsa_related_card {
+    display: block;
+    background: var(--tsa-card-bg);
+    border: 1px solid var(--tsa-navy-border);
+    border-radius: var(--tsa-radius);
+    padding: 20px;
+    transition: var(--tsa-transition);
+}
+
+.tsa_related_card:hover {
+    transform: translateY(-4px);
+    border-color: var(--tsa-green);
+    box-shadow: var(--tsa-shadow);
+}
+
+.tsa_related_tag {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    color: var(--tsa-green);
+    margin-bottom: 8px;
+    display: block;
+}
+
+.tsa_related_card h4 {
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.tsa_related_card p {
+    font-size: 12.5px;
+    color: var(--tsa-text-muted);
+}
+
+.tsa_related_link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--tsa-navy);
+    margin-top: 12px;
+}
+
+@media (max-width: 960px) {
+    .tsa_related_grid {
+        grid-template-columns: 1fr 1fr;
     }
+}
 
-    .tsa_mistake_num {
-        font-size: 1.042vw;
-        min-width: 1.563vw;
+@media (max-width: 560px) {
+    .tsa_related_grid {
+        grid-template-columns: 1fr;
     }
-
-    .tsa_mistake_item h4 {
-        font-size: 0.807vw;
-        margin-bottom: 0.208vw;
-    }
-
-    .tsa_mistake_item p {
-        font-size: 0.703vw;
-    }
-
-    /* =====================================================
-       FIT / NOT FIT
-    ===================================================== */
-
-    .tsa_fit_grid {
-        gap: 1.354vw;
-    }
-
-    .tsa_fit_card {
-        padding: 1.667vw;
-        border-radius: 1.042vw;
-    }
-
-    .tsa_fit_card h3 {
-        font-size: 0.990vw;
-        gap: 0.521vw;
-        margin-bottom: 0.938vw;
-    }
-
-    .tsa_fit_card ul {
-        gap: 0.521vw;
-    }
-
-    .tsa_fit_card li {
-        gap: 0.521vw;
-        padding: 0.208vw 0.313vw;
-        font-size: 0.729vw;
-        border-radius: 0.313vw;
-    }
-
-    .tsa_fit_card.yes li:hover,
-    .tsa_fit_card.no li:hover {
-        transform: translateX(0.156vw);
-    }
-
-    /* =====================================================
-       TIMELINE
-    ===================================================== */
-
-    .tsa_timeline {
-        max-width: 37.500vw;
-        padding-left: 1.667vw;
-    }
-
-    .tsa_timeline::before {
-        left: 0.365vw;
-        top: 0.313vw;
-        bottom: 0.313vw;
-        width: 0.104vw;
-    }
-
-    .tsa_timeline_item {
-        padding-bottom: 1.771vw;
-    }
-
-    .tsa_timeline_dot {
-        left: -1.667vw;
-        top: 0.208vw;
-        width: 0.833vw;
-        height: 0.833vw;
-        border-width: 0.156vw;
-        box-shadow: 0 0 0 0.104vw var(--tsa-green);
-    }
-
-    .tsa_timeline_time {
-        font-size: 0.625vw;
-        letter-spacing: 0.026vw;
-        margin-bottom: 0.313vw;
-    }
-
-    .tsa_timeline_item h4 {
-        font-size: 0.885vw;
-        margin-bottom: 0.313vw;
-    }
-
-    .tsa_timeline_item p {
-        font-size: 0.729vw;
-    }
-
-    /* =====================================================
-       COMPARISON
-    ===================================================== */
-
-    .tsa_compare_grid {
-        gap: 0.938vw;
-    }
-
-    .tsa_compare_col {
-        padding: 1.563vw;
-        border-radius: 1.042vw;
-    }
-
-    .tsa_compare_col h3 {
-        font-size: 0.938vw;
-        margin-bottom: 0.938vw;
-    }
-
-    .tsa_compare_row {
-        gap: 0.521vw;
-        padding: 0.417vw 0;
-        font-size: 0.729vw;
-        border-bottom-width: 0.052vw;
-    }
-
-    /* =====================================================
-       WORD STRIP
-    ===================================================== */
-
-    .tsa_word_strip {
-        gap: 0.625vw;
-    }
-
-    .tsa_word_strip span {
-        font-size: 1.042vw;
-        padding: 0.521vw 1.042vw;
-        border-radius: 52.083vw;
-    }
-
-    .tsa_word_strip span:hover {
-        transform: translateY(-0.156vw);
-    }
-
-    /* =====================================================
-       FAQ
-    ===================================================== */
-
-    .tsa_faq_list {
-        max-width: 42.708vw;
-        gap: 0.625vw;
-    }
-
-    .tsa_faq_item {
-        border-radius: 0.625vw;
-        border-width: 0.052vw;
-    }
-
-    .tsa_faq_item.open {
-        border-width: 0.104vw;
-    }
-
-    .tsa_faq_q {
-        padding: 1.042vw 1.250vw;
-        font-size: 0.807vw;
-    }
-
-    .tsa_faq_a p {
-        padding: 0 1.250vw 1.146vw;
-        font-size: 0.755vw;
-    }
-
-    .tsa_faq_item.open .tsa_faq_a {
-        max-height: 12.500vw;
-    }
-
-    /* =====================================================
-       FINAL CTA
-    ===================================================== */
-
-    .tsa_final h2 {
-        font-size: 1.875vw;
-        margin-bottom: 0.833vw;
-    }
-
-    .tsa_final p {
-        max-width: 29.167vw;
-        font-size: 0.833vw;
-        margin: 0 auto 1.875vw;
-    }
-
-    .tsa_final_ctas {
-        gap: 0.833vw;
-    }
-
-    /* =====================================================
-       FOOTER
-    ===================================================== */
-
-    .tsa_footer {
-        padding: 1.667vw;
-    }
-
-    .tsa_footer p {
-        font-size: 0.651vw;
-    }
-
-    /* =====================================================
-       SCROLL REVEAL
-    ===================================================== */
-
-    .tsa_reveal {
-        transform: translateY(1.458vw);
-    }
-
-    .tsa_reveal.tsa_in_view {
-        transform: translateY(0);
-    }
+}
 
 
 /* =====================================================
-   LARGE DESKTOP / 2K / 4K SCREENS
-   PART 5
-   Split Layout + Photo Grid + Video Reel +
-   Filmstrip Gallery + Quote Portrait
-===================================================== */
+   NEW — "ATTRACTIVE" REDESIGN PASS v2
+   Bolder hero, an orbital season dial (signature element),
+   glass-morphic overlaps, asymmetric bento photo grid, and
+   organic wave dividers. All additive — nothing above touched.
+   ===================================================== */
 
-    /* =====================================================
-       HERO MEDIA
-    ===================================================== */
+/* --- HERO v2: oversized diagonal headline + floating glass badges --- */
+.tsa_hero2_inner {
+    position: relative;
+    z-index: 2;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 128px 32px 190px;
+    text-align: left;
+}
 
-    .tsa_hero_media {
-        inset: 0;
+.tsa_hero2_kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--tsa-green);
+    margin-bottom: 26px;
+}
+
+.tsa_hero2_kicker::before {
+    content: "";
+    width: 30px;
+    height: 1px;
+    background: var(--tsa-green);
+}
+
+.tsa_hero2_inner h1 {
+    font-size: 76px;
+    line-height: .98;
+    color: #fff;
+    letter-spacing: -2px;
+    margin-bottom: 26px;
+    max-width: 780px;
+}
+
+.tsa_hero2_inner h1 em {
+    font-style: italic;
+    color: var(--tsa-green);
+    font-weight: 400;
+}
+
+.tsa_hero2_inner p {
+    font-size: 18px;
+    color: #b9c8db;
+    max-width: 480px;
+    margin: 0 0 44px;
+}
+
+.tsa_hero2_badges {
+    position: absolute;
+    right: 32px;
+    bottom: -46px;
+    z-index: 3;
+    display: flex;
+    gap: 16px;
+}
+
+.tsa_hero2_badge {
+    background: #ffffff14;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid #ffffff2a;
+    border-radius: 18px;
+    padding: 18px 22px;
+    min-width: 150px;
+    box-shadow: 0 20px 50px #00000040;
+    transition: var(--tsa-transition);
+}
+
+.tsa_hero2_badge:hover {
+    transform: translateY(-6px);
+    border-color: var(--tsa-green);
+}
+
+.tsa_hero2_badge_num {
+    font-family: var(--tsa-font-display);
+    font-size: 26px;
+    color: var(--tsa-green);
+    margin-bottom: 4px;
+}
+
+.tsa_hero2_badge_label {
+    font-size: 11.5px;
+    color: #cdd8e6;
+    letter-spacing: .3px;
+}
+
+@media (max-width: 900px) {
+    .tsa_hero2_inner {
+        padding: 110px 24px 210px;
     }
 
-    .tsa_hero_scrim {
-        inset: 0;
+    .tsa_hero2_inner h1 {
+        font-size: 44px;
+        letter-spacing: -1px;
     }
 
-    .tsa_hero_media video,
-    .tsa_hero_media img {
-        width: 100%;
-        height: 100%;
+    .tsa_hero2_badges {
+        position: static;
+        margin-top: 40px;
+        flex-wrap: wrap;
+    }
+}
+
+/* --- WAVE DIVIDER: organic SVG-shaped transition between sections --- */
+.tsa_wave {
+    display: block;
+    width: 100%;
+    line-height: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.tsa_wave svg {
+    display: block;
+    width: 100%;
+    height: 90px;
+}
+
+.tsa_wave_down {
+    margin-top: -1px;
+}
+
+/* --- ORBIT: signature season dial. A ring of five month nodes
+   arranged in a circle around a center hub, replacing a flat
+   linear strip with something worth lingering on. --- */
+.tsa_orbit_wrap {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 30px;
+}
+
+.tsa_orbit {
+    position: relative;
+    width: 560px;
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+.tsa_orbit_ring {
+    position: absolute;
+    inset: 8%;
+    border-radius: 50%;
+    border: 1.5px dashed var(--tsa-navy-border);
+}
+
+.tsa_orbit_ring::before {
+    content: "";
+    position: absolute;
+    inset: 16%;
+    border-radius: 50%;
+    border: 1px solid var(--tsa-navy-border);
+    opacity: .6;
+}
+
+.tsa_orbit_hub {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 34%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: var(--tsa-bg-dark);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: var(--tsa-shadow-lg);
+    padding: 10px;
+}
+
+.tsa_orbit_hub svg {
+    color: var(--tsa-green);
+    margin-bottom: 8px;
+}
+
+.tsa_orbit_hub_title {
+    font-family: var(--tsa-font-display);
+    font-size: 15px;
+    line-height: 1.25;
+}
+
+.tsa_orbit_hub_sub {
+    font-size: 10.5px;
+    color: #93a7c0;
+    letter-spacing: .4px;
+    margin-top: 4px;
+}
+
+.tsa_orbit_node {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 128px;
+    text-align: center;
+    cursor: default;
+}
+
+.tsa_orbit_node_dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--tsa-card-bg);
+    border: 3px solid var(--tsa-navy);
+    margin: 0 auto 10px;
+    transition: var(--tsa-transition);
+}
+
+.tsa_orbit_node:hover .tsa_orbit_node_dot {
+    background: var(--tsa-green);
+    border-color: var(--tsa-green);
+    transform: scale(1.25);
+}
+
+.tsa_orbit_node_month {
+    font-family: var(--tsa-font-display);
+    font-size: 15px;
+    color: var(--tsa-navy);
+    margin-bottom: 4px;
+}
+
+.tsa_orbit_node_best {
+    font-size: 11px;
+    color: var(--tsa-text-muted);
+    line-height: 1.4;
+}
+
+@media (max-width: 760px) {
+    .tsa_orbit_wrap {
+        padding: 0;
     }
 
-    /* =====================================================
-       SPLIT LAYOUT
-    ===================================================== */
-
-    .tsa_split_layout {
-        gap: 2.917vw;
+    .tsa_orbit {
+        width: auto;
+        aspect-ratio: auto;
+        display: grid;
+        gap: 12px;
     }
 
-    .tsa_split_media {
-        height: 21.875vw;
+    .tsa_orbit_ring,
+    .tsa_orbit_hub {
+        display: none;
     }
 
-    .tsa_split_media_frame {
-        border-radius: 1.042vw;
+    .tsa_orbit_node {
+        position: static;
+        transform: none;
+        width: auto;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-align: left;
+        background: var(--tsa-card-bg);
+        border: 1px solid var(--tsa-navy-border);
+        border-radius: var(--tsa-radius);
+        padding: 14px 16px;
     }
 
-    .tsa_split_media_frame.front {
-        border-width: 0.313vw;
+    .tsa_orbit_node_dot {
+        margin: 0;
+        flex-shrink: 0;
+    }
+}
+
+/* --- GLASS STAT: floating glass card overlapping an image,
+   used on the split "why visit" media block. --- */
+.tsa_glass_stat {
+    position: absolute;
+    left: -28px;
+    bottom: 34px;
+    z-index: 3;
+    background: #ffffffe6;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 18px 22px;
+    box-shadow: var(--tsa-shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.tsa_page[data-theme="dark"] .tsa_glass_stat {
+    background: #16243ae6;
+}
+
+.tsa_glass_stat_icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: var(--tsa-navy);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.tsa_glass_stat_num {
+    font-family: var(--tsa-font-display);
+    font-size: 20px;
+    color: var(--tsa-navy);
+    line-height: 1.1;
+}
+
+.tsa_glass_stat_label {
+    font-size: 11px;
+    color: var(--tsa-text-muted);
+}
+
+@media (max-width: 900px) {
+    .tsa_glass_stat {
+        left: 16px;
+        bottom: -20px;
+    }
+}
+
+/* --- BENTO PHOTO GRID: asymmetric grid (one large + smaller
+   tiles) instead of a uniform card grid. --- */
+.tsa_bento_grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 220px 220px;
+    gap: 20px;
+}
+
+.tsa_bento_tile {
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: var(--tsa-shadow);
+}
+
+.tsa_bento_tile.big {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.tsa_bento_tile.wide {
+    grid-column: span 2;
+}
+
+.tsa_bento_tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .6s cubic-bezier(.4, 0, .2, 1);
+}
+
+.tsa_bento_tile:hover img {
+    transform: scale(1.08);
+}
+
+.tsa_bento_tag {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: #ffffffe6;
+    color: var(--tsa-navy);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .3px;
+    padding: 6px 12px;
+    border-radius: 999px;
+}
+
+.tsa_bento_caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 18px;
+    background: var(--tsa-overlay-scrim);
+    color: #fff;
+}
+
+.tsa_bento_caption h4 {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+
+.tsa_bento_caption span {
+    font-size: 12px;
+    color: #cdd8e6;
+}
+
+@media (max-width: 960px) {
+    .tsa_bento_grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 200px 200px 200px;
     }
 
-    .tsa_split_media_accent {
-        width: 6.250vw;
-        height: 6.250vw;
-        left: -0.938vw;
-        bottom: -0.938vw;
-        border-radius: 1.042vw;
+    .tsa_bento_tile.big {
+        grid-column: span 2;
+        grid-row: span 1;
     }
 
-    /* =====================================================
-       PHOTO GRID
-    ===================================================== */
+    .tsa_bento_tile.wide {
+        grid-column: span 2;
+    }
+}
 
-    .tsa_photo_grid {
-        gap: 1.563vw;
-        margin-top: 2.604vw;
+/* --- QUOTE v2: oversized background quotation mark behind
+   the pull-quote text, instead of a small icon above it. --- */
+.tsa_quote2 {
+    position: relative;
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.tsa_quote2_mark {
+    position: absolute;
+    top: -58px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--tsa-font-display);
+    font-size: 220px;
+    color: var(--tsa-green);
+    opacity: .12;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* --- SECTION TEXTURE: faint contour-line pattern for soft
+   sections, layered under content via a pseudo-element. --- */
+.tsa_texture {
+    position: relative;
+}
+
+.tsa_texture::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 18% 22%, var(--tsa-navy-border) 0, transparent 42%),
+        radial-gradient(circle at 84% 74%, var(--tsa-navy-border) 0, transparent 46%);
+    opacity: .6;
+    pointer-events: none;
+}
+
+.tsa_texture > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =====================================================
+   NEW — "VIVID" MEDIA SYSTEM
+   A bolder, more animated media language: zigzag feature
+   rows (image left/right), a full-bleed parallax banner,
+   a glowing video banner, and a hover-reveal duo grid.
+   All classes are new — nothing above is touched.
+   ===================================================== */
+
+@keyframes tsa_glow_pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, .45); }
+    50% { box-shadow: 0 0 0 16px rgba(16, 185, 129, 0); }
+}
+
+@keyframes tsa_gradient_shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- ZIGZAG FEATURE ROW: alternating image/text, use
+   .tsa_zz_row.reverse to flip which side the image sits on --- */
+.tsa_zz_row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+}
+
+.tsa_zz_row.reverse {
+    grid-template-columns: 1fr 1fr;
+}
+
+.tsa_zz_row.reverse .tsa_zz_media {
+    order: 2;
+}
+
+.tsa_zz_row.reverse .tsa_zz_content {
+    order: 1;
+}
+
+.tsa_zz_media {
+    position: relative;
+    border-radius: 26px;
+    overflow: hidden;
+    aspect-ratio: 5 / 4;
+    box-shadow: var(--tsa-shadow-lg);
+    transition: transform .5s cubic-bezier(.4,0,.2,1), box-shadow .5s ease;
+    transform: perspective(1000px) rotateY(0deg);
+}
+
+.tsa_zz_row:not(.reverse) .tsa_zz_media:hover {
+    transform: perspective(1000px) rotateY(-4deg) scale(1.02);
+}
+
+.tsa_zz_row.reverse .tsa_zz_media:hover {
+    transform: perspective(1000px) rotateY(4deg) scale(1.02);
+}
+
+.tsa_zz_media:hover {
+    animation: tsa_glow_pulse 1.6s ease-out 1;
+}
+
+.tsa_zz_media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .7s ease, filter .5s ease;
+}
+
+.tsa_zz_media:hover img {
+    transform: scale(1.12);
+}
+
+.tsa_zz_media_badge {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    background: #ffffffee;
+    color: var(--tsa-navy);
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: .3px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    z-index: 2;
+    transition: var(--tsa-transition);
+}
+
+.tsa_zz_media:hover .tsa_zz_media_badge {
+    background: var(--tsa-green);
+    color: #06281f;
+    transform: translateY(-2px);
+}
+
+.tsa_zz_media_frame {
+    position: absolute;
+    inset: 10px;
+    border: 1px solid #ffffff40;
+    border-radius: 20px;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity .4s ease, inset .4s ease;
+}
+
+.tsa_zz_media:hover .tsa_zz_media_frame {
+    opacity: 1;
+    inset: 16px;
+}
+
+.tsa_zz_kicker {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--tsa-green);
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+}
+
+.tsa_zz_kicker::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 46px;
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--tsa-green), var(--tsa-navy), var(--tsa-green));
+    background-size: 200% 100%;
+    animation: tsa_gradient_shift 3s ease infinite;
+}
+
+.tsa_zz_content h2 {
+    font-size: 32px;
+    margin-bottom: 18px;
+}
+
+.tsa_zz_content > p {
+    color: var(--tsa-text-muted);
+    font-size: 16px;
+    margin-bottom: 22px;
+}
+
+.tsa_zz_list {
+    display: grid;
+    gap: 12px;
+}
+
+.tsa_zz_list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--tsa-text-body);
+    padding: 10px 14px;
+    border-radius: 10px;
+    transition: var(--tsa-transition);
+    transform: translateX(0);
+}
+
+.tsa_zz_list li:hover {
+    background: var(--tsa-navy-soft);
+    transform: translateX(8px);
+}
+
+.tsa_zz_list_icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--tsa-navy);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: var(--tsa-transition);
+}
+
+.tsa_zz_list li:hover .tsa_zz_list_icon {
+    background: var(--tsa-green);
+    color: #06281f;
+    transform: rotate(360deg);
+}
+
+@media (max-width: 900px) {
+    .tsa_zz_row,
+    .tsa_zz_row.reverse {
+        grid-template-columns: 1fr;
     }
 
-    .tsa_photo_card {
-        border-width: 0.052vw;
-        border-radius: 1.250vw;
-        box-shadow: 0 0.781vw 1.823vw rgba(0, 0, 0, .06);
+    .tsa_zz_row.reverse .tsa_zz_media,
+    .tsa_zz_row.reverse .tsa_zz_content {
+        order: initial;
+    }
+}
+
+/* --- FULL-BLEED PARALLAX BANNER (top-of-section style) --- */
+.tsa_banner_full {
+    position: relative;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.tsa_banner_full::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #0f1c2edd 0%, #0f1c2e99 50%, #0f1c2edd 100%);
+    z-index: 0;
+}
+
+.tsa_banner_full_content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 640px;
+    padding: 0 24px;
+}
+
+.tsa_banner_full_badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff1a;
+    border: 1px solid #ffffff33;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border-radius: 999px;
+    margin-bottom: 22px;
+    backdrop-filter: blur(6px);
+}
+
+.tsa_banner_full h2 {
+    color: #fff;
+    font-size: 38px;
+    margin-bottom: 16px;
+}
+
+.tsa_banner_full p {
+    color: #cdd8e6;
+    font-size: 16px;
+    margin-bottom: 26px;
+}
+
+@media (max-width: 640px) {
+    .tsa_banner_full {
+        background-attachment: scroll;
+        min-height: 380px;
     }
 
-    .tsa_photo_card:hover {
-        transform: translateY(-0.417vw);
-        box-shadow: 0 1.302vw 2.865vw rgba(0, 0, 0, .12);
+    .tsa_banner_full h2 {
+        font-size: 28px;
     }
+}
 
-    .tsa_photo_card_img {
-        height: 13.542vw;
+/* --- VIDEO BANNER (bottom-of-section style), glowing play control --- */
+.tsa_video_banner {
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: var(--tsa-shadow-lg);
+    aspect-ratio: 21 / 9;
+    background: var(--tsa-bg-dark);
+}
+
+.tsa_video_banner img,
+.tsa_video_banner video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .8s ease, filter .4s ease;
+}
+
+.tsa_video_banner:hover img,
+.tsa_video_banner:hover video {
+    transform: scale(1.05);
+    filter: brightness(.85);
+}
+
+.tsa_video_banner_scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, #0f1c2ee6 0%, #0f1c2e33 55%, transparent 100%);
+}
+
+.tsa_video_banner_play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    border: none;
+    background: #ffffffee;
+    color: var(--tsa-navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--tsa-transition);
+    animation: tsa_glow_pulse 2.4s ease-out infinite;
+}
+
+.tsa_video_banner_play:hover {
+    transform: translate(-50%, -50%) scale(1.12);
+    background: var(--tsa-green);
+    color: #06281f;
+}
+
+.tsa_video_banner_text {
+    position: absolute;
+    left: 32px;
+    bottom: 28px;
+    right: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.tsa_video_banner_text h3 {
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.tsa_video_banner_text p {
+    color: #cdd8e6;
+    font-size: 13.5px;
+}
+
+.tsa_video_banner_tag {
+    background: var(--tsa-green);
+    color: #06281f;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 7px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+/* --- DUO GRID: two images, hover-reveal captions --- */
+.tsa_duo_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.tsa_duo_card {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    box-shadow: var(--tsa-shadow);
+    transition: box-shadow .4s ease, transform .4s ease;
+}
+
+.tsa_duo_card:hover {
+    box-shadow: var(--tsa-shadow-lg);
+    transform: translateY(-6px);
+}
+
+.tsa_duo_card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .6s ease;
+}
+
+.tsa_duo_card:hover img {
+    transform: scale(1.1);
+}
+
+.tsa_duo_ribbon {
+    position: absolute;
+    top: 20px;
+    right: -34px;
+    background: var(--tsa-green);
+    color: #06281f;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .3px;
+    padding: 6px 40px;
+    transform: rotate(40deg);
+    z-index: 2;
+    box-shadow: 0 4px 10px #00000030;
+}
+
+.tsa_duo_overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, #0f1c2ee6 0%, #0f1c2e00 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 26px;
+}
+
+.tsa_duo_overlay h4 {
+    color: #fff;
+    font-size: 19px;
+    margin-bottom: 8px;
+    transform: translateY(8px);
+    transition: transform .4s ease;
+}
+
+.tsa_duo_overlay p {
+    color: #cdd8e6;
+    font-size: 13px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height .4s ease, opacity .4s ease;
+}
+
+.tsa_duo_card:hover .tsa_duo_overlay h4 {
+    transform: translateY(0);
+}
+
+.tsa_duo_card:hover .tsa_duo_overlay p {
+    max-height: 80px;
+    opacity: 1;
+}
+
+@media (max-width: 760px) {
+    .tsa_duo_grid {
+        grid-template-columns: 1fr;
     }
-
-    .tsa_photo_card_body {
-        padding: 1.354vw;
-    }
-
-    .tsa_photo_card_body h4 {
-        font-size: 1.250vw;
-        margin-bottom: 0.729vw;
-    }
-
-    .tsa_photo_card_body p {
-        font-size: 0.833vw;
-    }
-
-    .tsa_photo_label {
-        gap: 0.417vw;
-        padding: 0.365vw 0.781vw;
-        border-radius: 2.604vw;
-        font-size: 0.677vw;
-        margin-bottom: 0.833vw;
-    }
-
-    .tsa_photo_list {
-        margin-top: 0.938vw;
-        gap: 0.521vw;
-    }
-
-    .tsa_photo_list span {
-        gap: 0.521vw;
-        font-size: 0.781vw;
-    }
-
-    /* =====================================================
-       VIDEO REEL
-    ===================================================== */
-
-    .tsa_reel_grid {
-        gap: 2.083vw;
-    }
-
-    .tsa_reel_media {
-        border-radius: 1.458vw;
-    }
-
-    .tsa_reel_play {
-        left: 1.146vw;
-        bottom: 1.146vw;
-        gap: 0.625vw;
-        padding: 0.417vw 1.042vw 0.417vw 0.417vw;
-        border-radius: 52.083vw;
-    }
-
-    .tsa_reel_play:hover {
-        transform: translateY(-0.156vw);
-    }
-
-    .tsa_reel_play_icon {
-        width: 2.292vw;
-        height: 2.292vw;
-        border-radius: 0.521vw;
-    }
-
-    .tsa_reel_play span {
-        font-size: 0.677vw;
-    }
-
-    .tsa_reel_stats {
-        gap: 0.729vw;
-    }
-
-    .tsa_reel_stat {
-        gap: 0.833vw;
-        padding: 0.938vw;
-        border-radius: 0.833vw;
-    }
-
-    .tsa_reel_stat:hover {
-        transform: translateX(0.313vw);
-    }
-
-    .tsa_reel_stat_icon {
-        width: 2.083vw;
-        height: 2.083vw;
-        border-radius: 0.521vw;
-    }
-
-    .tsa_reel_stat_title {
-        font-size: 0.781vw;
-        margin-bottom: 0.208vw;
-    }
-
-    .tsa_reel_stat_label {
-        font-size: 0.677vw;
-    }
-
-    /* =====================================================
-       FILMSTRIP GALLERY
-    ===================================================== */
-
-    .tsa_filmstrip_wrap {
-        padding: 0.313vw 0.208vw 0.938vw;
-    }
-
-    .tsa_filmstrip {
-        gap: 1.146vw;
-    }
-
-    .tsa_filmstrip_frame {
-        width: 13.542vw;
-        height: 17.708vw;
-        border-radius: 0.938vw;
-    }
-
-    .tsa_filmstrip_frame:nth-child(even) {
-        margin-top: 1.771vw;
-    }
-
-    .tsa_filmstrip_frame:hover {
-        transform: translateY(-0.208vw);
-    }
-
-    .tsa_filmstrip_tag {
-        top: 0.729vw;
-        left: 0.729vw;
-        padding: 0.313vw 0.677vw;
-        border-radius: 52.083vw;
-        font-size: 0.599vw;
-    }
-
-    .tsa_filmstrip_caption {
-        padding: 0.833vw;
-        font-size: 0.677vw;
-    }
-
-    /* =====================================================
-       QUOTE PORTRAIT
-    ===================================================== */
-
-    .tsa_quote_portrait_wrap {
-        margin-bottom: 1.146vw;
-    }
-
-    .tsa_quote_portrait_ring {
-        width: 4.792vw;
-        height: 4.792vw;
-        padding: 0.208vw;
-    }
-
-    .tsa_quote_portrait {
-        border-width: 0.156vw;
-    }
-
 }
